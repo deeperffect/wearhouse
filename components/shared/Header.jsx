@@ -1,12 +1,13 @@
+import Container from '@components/Container'
 import Navbar from './Navbar'
 
 const Header = () => {
   return (
-    <div className='bg-gray-200'>
-      <header>
+    <header className='bg-gray-200'>
+      <Container>
         <Navbar />
-      </header>
-    </div>
+      </Container>
+    </header>
   )
 }
 

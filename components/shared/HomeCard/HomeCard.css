@@ -11,6 +11,10 @@
   overflow: hidden;
 }
 
+.card-drawer-item:not(.active) .card-home > figure:hover{
+  cursor:w-resize;
+}
+
 
 .card-home > figure img{
   position: absolute;
