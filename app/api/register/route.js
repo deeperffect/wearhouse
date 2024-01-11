@@ -1,22 +1,34 @@
-import { User } from '@models/User';
-import { connectToDB } from '@utils/database';
+import User from '@models/User';
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import connectDB from '@app/lib/connectDB.js';
 
 export async function POST(request) {
-  await connectToDB()
+  await connectDB()
 
+  const data = await request.json()
+  const { name, email, password } = data
+  //hash password
+  const hashedPassword = bcrypt.hashSync(password, 10)
+  const user = {
+    name: name,
+    email: email,
+    password: hashedPassword
+  }
   try {
-    const data = await request.json()
-    const { name, email, password } = data
-    const user = {
-      name: name,
-      email: email,
-      password: password
+    await User.create(user)
+    const currentUser = await User.findOne({ email })
+    // jwt token
+    const SECRET = '72439b26-2bce-4735-a60b-6e9bcd81ee9c'
+    const payload = {
+      _id: currentUser.id,
+      email: currentUser.email
     }
-
-      await User.create(user); 
-      return new Response(JSON.stringify([user, null]))
+    const token = await jwt.sign(payload, SECRET, {expiresIn: '3d'})
+    console.log('back', token)
+    return new Response(JSON.stringify(token))
   } catch (error) {
     console.log(error)
-    return new Response(JSON.stringify([null, error]))
+    return new Response(JSON.stringify(error))
   }
 }

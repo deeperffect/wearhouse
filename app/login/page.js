@@ -8,29 +8,33 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  function handleLogin(e) {
+  async function handleLogin(e) {
     e.preventDefault()
-    const data = {
+    const userData = {
       email: email,
       password: password
     }
 
-  // fetch('/api/login', {
-  //   method: 'POST', })
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      body: JSON.stringify(userData),}
+    )
 
-
+    const data = await response.json()
+    console.log(data)
   }
+
   return (
     <section>
       <Container>
         <div className="max-w-[30rem] mx-auto p-4">
-          <h2 className="text-xl pb-4 text-center">Login</h2>
-          <form className="text=l">
+          <h2 className="text-xl pb-4 text-center font-bold">Login</h2>
+          <form className="text-l text-black">
             <div className="pb-4">
-                <input className="rounded-md max-w-fuxl w-full p-2 leading-none" type="email" id="email" placeholder="Email" onChange={setEmail} value ={email}/>
+                <input className="rounded-md max-w-fuxl w-full p-2 leading-none" type="email" id="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value ={email}/>
             </div>
             <div className="pb-4">
-                <input className="rounded-md max-w-full w-full p-2 leading-none" type="password" id="password" placeholder="Password" onChange={setPassword} value={password}/>
+                <input className="rounded-md max-w-full w-full p-2 leading-none" type="password" id="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password}/>
             </div>
             <button className="bg-gray-100 text-black w-full p-2" onClick={handleLogin}>Login</button>
           </form>

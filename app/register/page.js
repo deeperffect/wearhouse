@@ -2,14 +2,16 @@
 import Container from '@components/Container'
 import Link from 'next/link'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 const Register = () => {
 
+  const router = useRouter()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-
+  
   async function handleRegister(e) {
     e.preventDefault()
     const userData = {
@@ -24,15 +26,16 @@ const Register = () => {
       body: JSON.stringify(userData),
     })
     
-    const data = await response.json()
-    console.log(data)
+    const token = await response.json()
+    document.cookie = `token=${token}; path=/;`
+    router.push('/')
   }
 
   return (
     <section>
       <Container>
         <div className="max-w-[30rem] mx-auto p-4">
-          <h2 className="text-xl pb-4 text-center">Register</h2>
+          <h2 className="text-xl pb-4 text-center font-bold">Register</h2>
           <form className="text-l text-black">
             <div className='pb-4'>
               <input className="rounded-md max-w-full w-full p-2 leading-none" type="text" id="Full Name" placeholder="Full Name" onChange={(e) => setName(e.target.value)} value={name}/>        

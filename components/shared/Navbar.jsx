@@ -1,10 +1,11 @@
+import Image from "next/image"
 import Link from "next/link"
 
 const Navbar = () => {
   return (
     <nav className="flex items-center justify-between">
       <Link className="w-[130px] h-auto" href="/">
-          <img src="/assets/images/logo2.svg" alt="logo" />
+          <Image src="/assets/images/logo2.svg" alt="logo" width={96} height={32} />
       </Link>
       <ul className="text-black text-l flex justify-end gap-6 px-6">
         <Link href="/">Home</Link>

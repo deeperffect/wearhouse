@@ -4,7 +4,7 @@ const HomeCard = ({card, index, setActive}) => {
   return (
     <div onClick={() => {setActive(index)}} className="card-home">
       <figure>
-        <img src={card.image} alt="" />
+        <img src={card.image} alt={`card${index+1}`} />
       </figure>
       <Link href={card.link}>
         <div className="card-inner">

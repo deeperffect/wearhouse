@@ -7,7 +7,7 @@ function Home() {
     <Section>
       <div className="max-w-[40rem] mx-auto">
         <HomeCards />
-        <h2 className="text-3xl uppercase text-center">Techwear outfits: Urban streetwear and Cyberpunk clothing</h2>
+        <h2 className="text-3xl uppercase text-center font-bold">Techwear outfits: Urban streetwear and Cyberpunk clothing</h2>
         <Searchbar />
       </div>
     </Section>

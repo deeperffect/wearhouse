@@ -23,4 +23,20 @@ const userSchema = new mongoose.Schema({
 { timestamps: true }
 )
 
-export const User = mongoose.model('User', userSchema)
+// userSchema.pre('save', async function () {
+//   try{
+//     const User = this.constructor
+//     const userExists = await User.find({
+//       email: this.get("email")
+//     })
+//     .lean()
+//     .exec()
+//     if (userExists.length > 0) {
+//       throw new Error ("user already exists")
+//     }
+//   }catch (error) {
+//     throw new Error(error)
+//   }
+//   })
+
+export default mongoose.models.User || mongoose.model("User", User);
