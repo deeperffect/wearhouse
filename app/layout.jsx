@@ -1,6 +1,8 @@
 import './globals.css'
 import Header from '@components/shared/Header'
 import { Poppins } from 'next/font/google'
+import { AuthProvider } from './contexts/AuthContext'
+
 
 export const metadata = {
   title: 'Wearhouse',
@@ -16,12 +18,15 @@ const poppins = Poppins({
 function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
-        <main>
-          <Header />
-          {children}
-        </main>
-      </body>
+      <AuthProvider>
+        <body className={poppins.className}>
+          <main>
+            <Header />
+            {children}
+          </main>
+        </body>
+      </AuthProvider>
+    
     </html>
   )
 }

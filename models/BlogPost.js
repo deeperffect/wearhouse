@@ -21,4 +21,4 @@ const blogPostSchema = new mongoose.Schema({
 { timestamps: true }
 )
 
-export default mongoose.models.BlogPost || mongoose.model("BlogPost", BlogPost);
+export default mongoose.models.BlogPost || mongoose.model("BlogPost", blogPostSchema);

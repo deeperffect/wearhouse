@@ -19,7 +19,7 @@ export async function POST(request) {
     await User.create(user)
     const currentUser = await User.findOne({ email })
     // jwt token
-    const SECRET = '72439b26-2bce-4735-a60b-6e9bcd81ee9c'
+    const SECRET = process.env.SECRET
     const payload = {
       _id: currentUser.id,
       email: currentUser.email

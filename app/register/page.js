@@ -11,6 +11,7 @@ const Register = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+
   
   async function handleRegister(e) {
     e.preventDefault()
@@ -28,6 +29,7 @@ const Register = () => {
     
     const token = await response.json()
     document.cookie = `token=${token}; path=/;`
+
     router.push('/')
   }
 

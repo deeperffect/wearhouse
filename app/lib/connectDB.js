@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const DATABASE_URL = 'mongodb://127.0.0.1/wearhouse'
+const DATABASE_URL = process.env.DB_HOST
 
 if (!DATABASE_URL) {
   throw new Error("Please define the DATABASE_URL");

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 const itemSchema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
     required: true,
     min: 3,
@@ -34,4 +34,5 @@ const itemSchema = new mongoose.Schema({
 { timestamps: true }
 )
 
-export const Item = mongoose.model('Item', itemSchema)
+
+export default mongoose.models.Item || mongoose.model("Item", itemSchema);
