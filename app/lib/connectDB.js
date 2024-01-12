@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const DATABASE_URL = process.env.DB_HOST
+const DATABASE_URL = process.env.NEXT_PUBLIC_DB_HOST;
 
 if (!DATABASE_URL) {
   throw new Error("Please define the DATABASE_URL");
@@ -19,6 +19,7 @@ async function connectDB() {
 
   if (!cached.promise) {
     const opts = {
+      useUnifiedTopology: true,
       bufferCommands: false,
     };
 
@@ -26,6 +27,7 @@ async function connectDB() {
       return mongoose;
     });
   }
+
   cached.conn = await cached.promise;
   return cached.conn;
 }

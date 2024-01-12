@@ -1,15 +1,17 @@
 'use client'
+import { AuthContext } from "@app/contexts/AuthContext"
 import Container from "@components/Container"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState } from 'react'
+import { useContext } from "react"
 
 
 const Login = () => {
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
+  const { setUser } = useContext(AuthContext)
   async function handleLogin(e) {
     e.preventDefault()
     const userData = {
@@ -23,8 +25,8 @@ const Login = () => {
     )
 
     const token = await response.json()
-    document.cookie = `token=${token}; path=/;`
-
+    localStorage.setItem('token', JSON.stringify(token))
+    setUser(token)
     router.push('/')
   }
 

@@ -19,13 +19,12 @@ export async function POST(request) {
     await User.create(user)
     const currentUser = await User.findOne({ email })
     // jwt token
-    const SECRET = process.env.SECRET
+    const SECRET = process.env.NEXT_PUBLIC_SECRET
     const payload = {
       _id: currentUser.id,
       email: currentUser.email
     }
     const token = await jwt.sign(payload, SECRET, {expiresIn: '3d'})
-    console.log('back', token)
     return new Response(JSON.stringify(token))
   } catch (error) {
     console.log(error)
