@@ -24,12 +24,22 @@ const itemSchema = new mongoose.Schema({
     min: 8,
     max: 50
   },
+  size: {
+    type: String,
+    required: true,
+  },
+  sex: {
+    type: String,
+    required: true,
+  },
   category: {
     type: String,
     required: true,
-    min: 8,
-    max: 50
-  }
+  },
+  owner: {
+    type: mongoose.Types.ObjectId,
+    ref: 'User',
+  },
 },
 { timestamps: true }
 )

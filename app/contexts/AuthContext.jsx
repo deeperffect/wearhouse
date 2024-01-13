@@ -11,7 +11,8 @@ export const AuthProvider = ({ children }) => {
     if(token) {
       try{
         const decodedToken = jwtDecode(token)
-        setUser({decodedToken})
+        const { _id, email } = decodedToken
+        setUser({id: _id, email: email})
       } catch (error) {
         console.log(error)
       }

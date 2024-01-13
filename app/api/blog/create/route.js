@@ -5,17 +5,14 @@ export async function POST(request) {
   await connectDB()
 
   const data = await request.json()
-  const { image, title, description } = data
+  const { image, title, description, owner } = data
 
   const newPost = {
     image,
     title,
     description,
+    owner
   }
-
-  await BlogPost.save(newPost)
-
-
-
-  return new Response(JSON.stringify())
+  await BlogPost.create(newPost)
+  return new Response(JSON.stringify(newPost))
 }

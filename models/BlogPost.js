@@ -15,7 +15,11 @@ const blogPostSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
-    min: 16
+    min: 4
+  },
+  owner: {
+    type: mongoose.Types.ObjectId,
+    ref: 'User',
   },
 },
 { timestamps: true }

@@ -1,7 +1,7 @@
 import { BLOG_CARDS } from "@constants/blogCards"
 import BlogCard from "./BlogCard"
 
-const OfficialBlogs = () => {
+const BlogsOfficial = () => {
   return (
     <div>
       {BLOG_CARDS.map((card, index) => {
@@ -13,4 +13,4 @@ const OfficialBlogs = () => {
   )  
 }
 
-export default OfficialBlogs
+export default BlogsOfficial
