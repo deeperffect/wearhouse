@@ -3,7 +3,7 @@ import BlogCard from "./BlogCard"
 
 const BlogsOfficial = () => {
   return (
-    <div>
+    <div className="grid grid-cols-1 gap-4">
       {BLOG_CARDS.map((card, index) => {
         return (
           <BlogCard card={card} key={index}/>

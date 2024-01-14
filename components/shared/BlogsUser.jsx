@@ -19,11 +19,12 @@ const BlogsUser = () => {
   }, [])
 
   return (
-    <div>
+    <div className="grid grid-cols-2 gap-4">
       {blogs.map((card, index) => (
         <BlogCard card={card} key={index} />
-      ))}
+        ))}
     </div>
+   
   )
 }
 

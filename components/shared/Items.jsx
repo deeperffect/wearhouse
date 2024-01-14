@@ -21,11 +21,11 @@ const Items = () => {
   }, [])
 
   return (
-    <div>
+    <>
       {items.map((card, index) => (
         <ItemCard card={card} key={index} />
       ))}
-    </div>
+    </>
   )
 }
 

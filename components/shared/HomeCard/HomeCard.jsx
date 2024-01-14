@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import './HomeCard.css'
+import { useContext } from 'react'
+import { AuthContext } from '@app/contexts/AuthContext'
 const HomeCard = ({card, index, setActive}) => {
+  const { user } = useContext(AuthContext)
   return (
     <div onClick={() => {setActive(index)}} className="card-home">
       <figure>

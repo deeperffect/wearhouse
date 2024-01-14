@@ -19,7 +19,6 @@ async function connectDB() {
 
   if (!cached.promise) {
     const opts = {
-      useUnifiedTopology: true,
       bufferCommands: false,
     };
 
