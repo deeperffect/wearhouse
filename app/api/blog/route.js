@@ -1,4 +1,4 @@
-import connectDB from "@app/lib/connectDB";
+import connectDB from "@app/utils/connectDB";
 import BlogPost from "@models/BlogPost";
 
 export async function GET(request) {

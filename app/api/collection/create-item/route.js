@@ -1,4 +1,4 @@
-import connectDB from "@app/lib/connectDB"
+import connectDB from "@app/utils/connectDB"
 import Item from "@models/Item"
 
 export async function POST(request) {

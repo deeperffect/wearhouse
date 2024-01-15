@@ -3,6 +3,7 @@ import { AuthContext } from "@app/contexts/AuthContext"
 import Section from "@components/Section"
 import { useRouter } from "next/navigation"
 import { useContext, useState } from 'react'
+import isAuth from "@app/utils/isAuth"
 
 const CreateItem = () => {
   const [title, setTitle] = useState('')
@@ -99,4 +100,4 @@ const CreateItem = () => {
   )
 }
 
-export default CreateItem
+export default isAuth(CreateItem)

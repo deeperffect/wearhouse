@@ -1,5 +1,6 @@
 'use client'
 import { AuthContext } from "@app/contexts/AuthContext"
+import isAuth from "@app/utils/isAuth"
 import Section from "@components/Section"
 import { useRouter } from "next/navigation"
 import { useContext, useState } from 'react'
@@ -55,4 +56,4 @@ const CreatePost = () => {
   )
 }
 
-export default CreatePost
+export default isAuth(CreatePost)

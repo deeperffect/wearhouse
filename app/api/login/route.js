@@ -1,4 +1,4 @@
-import connectDB from "@app/lib/connectDB";
+import connectDB from "@app/utils/connectDB";
 import User from "@models/User";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'

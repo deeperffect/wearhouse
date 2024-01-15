@@ -7,6 +7,7 @@ import BlogsUser from "@components/shared/BlogsUser"
 import Image from "next/image"
 import Link from "next/link"
 import { useContext } from "react"
+import BlogsFilter from "@components/shared/BlogsFilter"
 
 
 const Blog = () => {
@@ -31,11 +32,12 @@ const Blog = () => {
         <div className="grid grid-cols-[1fr_2fr] gap-4">
           <div>
             <h2 className="text-2xl font-bold pb-4">Official posts</h2>
+            <h3>By Wearhouse</h3>
             <BlogsOfficial />
           </div>
           <div>
             <h2 className="text-2xl font-bold pb-4">User posts</h2>           
-            <h3>Latest posts</h3>        
+            <BlogsFilter />        
             <BlogsUser />
           </div>    
         </div>    
