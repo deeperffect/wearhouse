@@ -24,7 +24,6 @@ const BlogsUser = () => {
         <BlogCard card={card} key={index} />
         ))}
     </div>
-   
   )
 }
 

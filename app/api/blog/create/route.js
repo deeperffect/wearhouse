@@ -6,12 +6,11 @@ export async function POST(request) {
 
   const data = await request.json()
   const { image, title, description, owner } = data
-
   const newPost = {
     image,
     title,
     description,
-    owner
+    owner: owner
   }
   await BlogPost.create(newPost)
   return new Response(JSON.stringify(newPost))

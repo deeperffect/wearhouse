@@ -1,4 +1,5 @@
 import Section from "@components/Section"
+import Link from "next/link"
 
 const ItemCard = ({ card }) => {
   return (
@@ -7,7 +8,9 @@ const ItemCard = ({ card }) => {
 
       <article>
         <figure className="relative pb-[60%]">
-          <img className="absolute inset-0 w-full h-full object-cover" src={card.image} alt={card.title}></img>
+          <Link href={`/collection/${card._id}`}>
+            <img className="absolute inset-0 w-full h-full object-cover" src={card.image} alt={card.title}></img>
+          </Link>
           <p className="px-2 max-w-full text-xl text-white absolute bottom-0 left-0 bg-black/50 rounded-full">€{card.price}</p>
           <p className="text-xl max-w-full uppercase px-2 text-white absolute bottom-0 right-0 bg-black/50 rounded-full">{card.size}</p>
         </figure>

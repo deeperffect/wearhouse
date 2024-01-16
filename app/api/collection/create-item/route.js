@@ -18,6 +18,5 @@ export async function POST(request) {
   }
 
   const createdItem = await Item.create(newItem)
-  console.log(createdItem)
   return new Response(JSON.stringify(newItem))
 }
