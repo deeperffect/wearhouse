@@ -6,8 +6,6 @@ export async function PATCH(request) {
   const data = await request.json()
   const collectionId = data.collectionId
   const itemData = data.itemData
-  const itemFound = Item.findById(collectionId)
-  console.log(itemFound)
-  console.log(collectionId)
-  return new Response(JSON.stringify('item updated'))
+  const itemFound = await Item.findByIdAndUpdate(collectionId, itemData)
+  return new Response(JSON.stringify(itemFound))
 }

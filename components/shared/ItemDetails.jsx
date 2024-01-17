@@ -6,22 +6,22 @@ const ItemDetails = ({item}) => {
   const { user } = useContext(AuthContext)
 
   return (
-    <article> 
-      <header>
-        <h2 className="font-bold text-3xl">{item.title}</h2>
+    <article className="flex flex-col items-center"> 
+      <header className="p-4 font-bold text-3xl">
+        <h2>{item.title}</h2>
       </header>
-      <figure>
-        <img src={item.image} alt={item.title} />
+      <figure className="" >
+        <img className="" src={item.image} alt={item.title} />
       </figure>
       <div>
-        <p>{item.description}</p>
+        <p className="p-4 text-center max-w-[35rem]">{item.description}</p>
       </div>
       {user && user.id === item.owner ? (
-        <div>
+        <div className="bg-white text-black p-4 rounded-xl  w-full text-center max-w-[35rem]">
           <Link href={`/collection/${item._id}/edit`}>Edit</Link>
         </div>
         ) : (
-        <div>
+        <div className="bg-white text-black p-4 rounded-xl  w-full text-center max-w-[35rem]">
           <button>Buy</button>
         </div>
         )

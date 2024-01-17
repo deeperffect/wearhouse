@@ -6,6 +6,8 @@ export async function GET(request) {
   const url = request.url
   const itemIdRegex = /\/collection\/(\w+)/
   const itemId = url.match(itemIdRegex)[1]
+  console.log(itemId)
   const itemFound = await Item.findById(itemId)
+  console.log(itemFound)
   return new Response(JSON.stringify(itemFound))
 }
