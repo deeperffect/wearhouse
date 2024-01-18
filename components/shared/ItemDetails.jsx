@@ -7,14 +7,17 @@ const ItemDetails = ({item}) => {
 
   return (
     <article className="flex flex-col items-center"> 
-      <header className="p-4 font-bold text-3xl">
-        <h2>{item.title}</h2>
+      <header>
+        <h2 className="p-2 font-bold text-3xl">{item.title}</h2>
+        <p className="text-2xl uppercase text-center pb-2">{item.sex}</p>
       </header>
       <figure className="" >
         <img className="" src={item.image} alt={item.title} />
       </figure>
-      <div>
-        <p className="p-4 text-center max-w-[35rem]">{item.description}</p>
+      <div className="flex flex-col items-center p-4">
+        <p className="p-4 text-center max-w-[40rem]">{item.description}</p>
+        <p className="uppercase">Price: €{item.price}</p>
+        <p className="uppercase">Size: {item.size}</p>
       </div>
       {
         user && user.id === item.owner &&

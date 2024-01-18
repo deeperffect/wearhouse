@@ -1,12 +1,10 @@
 'use client'
-import { AuthContext } from "@app/contexts/AuthContext"
 import isAuth from "@app/utils/isAuth"
 import Section from "@components/Section"
 import { useRouter } from "next/navigation"
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 
 const EditPost = ({blogId}) => {
-  const { user } = useContext(AuthContext)
   const [image, setImage] = useState('')
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
@@ -48,7 +46,7 @@ const EditPost = ({blogId}) => {
           <input className="rounded-md max-w-full w-full p-2 leading-none" type="text" placeholder="Image.."
           value={image} onChange={(e) => setImage(e.target.value)}/>
         </div>
-        <button className="bg-gray-100 text-black w-full p-2" onClick={handleEdit}>Edit</button>
+        <button className="bg-gray-100 text-black w-full p-2 rounded-xl" onClick={handleEdit}>Edit</button>
       </form>  
     </Section>
   )

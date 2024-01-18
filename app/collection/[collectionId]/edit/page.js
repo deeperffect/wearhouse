@@ -61,6 +61,18 @@ const EditItem = ({params}) => {
     }
   }
 
+  async function handleDelete(e) {
+    e.preventDefault
+    const response = await fetch(`/api/collection/${params.collectionId}/delete`, {
+      method: 'DELETE'
+    })
+
+    if(response.ok) {
+      console.log('item deleted')
+      router.push('/collection')
+    }
+  }
+  
   return (
     <Section>
       <header>
@@ -115,7 +127,8 @@ const EditItem = ({params}) => {
             <option value="xxl">XXL</option>
           </select>
         </div>
-        <button className="bg-gray-100 text-black w-full p-2" onClick={handleEdit}>Edit</button>
+        <button className="bg-gray-100 text-black w-full p-2 rounded-xl mb-4" onClick={handleEdit}>Edit</button>
+        <button className="bg-red-400 text-black w-full p-2 rounded-xl" onClick={handleDelete}>Delete</button>
       </form>
     </Section>
   )

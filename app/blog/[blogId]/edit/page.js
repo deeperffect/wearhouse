@@ -47,6 +47,19 @@ const EditBlog = ({params}) => {
       router.push(`/blog/${params.blogId}`)
     }
   }
+
+  async function handleDelete(e) {
+    e.preventDefault
+    const response = await fetch(`/api/blog/${params.blogId}/delete`, {
+      method: 'DELETE'
+    })
+
+    if(response.ok) {
+      console.log('blog deleted')
+      router.push('/blog')
+    }
+  }
+  
   return (
     <Section>     
       <header>
@@ -65,7 +78,8 @@ const EditBlog = ({params}) => {
           <input className="rounded-md max-w-full w-full p-2 leading-none" type="text" placeholder={blog.image}
           value={image} onChange={(e) => setImage(e.target.value)}/>
         </div>
-        <button className="bg-gray-100 text-black w-full p-2" onClick={handleEdit}>Edit</button>
+        <button className="bg-gray-100 w-full text-black p-2 mb-4 rounded-xl text-center max-w-[35rem]" onClick={handleEdit}>Edit</button>
+        <button className="bg-red-400 w-full text-black p-2 rounded-xl text-center max-w-[35rem]" onClick={handleDelete}>Delete</button>
       </form>  
     </Section>
   )

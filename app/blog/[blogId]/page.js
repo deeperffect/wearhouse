@@ -24,7 +24,7 @@ const BlogDetailsPage = ({ params }) => {
   return (
     <Section>
       <Suspense fallback={<Loader />}>
-        <BlogDetails blog={blog}/>
+        <BlogDetails blog={blog} setBlog={setBlog}/>
       </Suspense>
     </Section>
   )
