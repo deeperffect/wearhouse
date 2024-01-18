@@ -3,9 +3,7 @@ import Item from "@models/Item";
 
 export async function PATCH(request) {
   await connectDB()
-  const data = await request.json()
-  const collectionId = data.collectionId
-  const itemData = data.itemData
+  const { itemData, collectionId } = await request.json()
   const itemFound = await Item.findByIdAndUpdate(collectionId, itemData)
   return new Response(JSON.stringify(itemFound))
 }

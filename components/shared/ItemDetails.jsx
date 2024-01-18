@@ -16,16 +16,24 @@ const ItemDetails = ({item}) => {
       <div>
         <p className="p-4 text-center max-w-[35rem]">{item.description}</p>
       </div>
-      {user && user.id === item.owner ? (
-        <div className="bg-white text-black p-4 rounded-xl  w-full text-center max-w-[35rem]">
-          <Link href={`/collection/${item._id}/edit`}>Edit</Link>
-        </div>
-        ) : (
-        <div className="bg-white text-black p-4 rounded-xl  w-full text-center max-w-[35rem]">
-          <button>Buy</button>
-        </div>
-        )
-    }
+      {
+        user && user.id === item.owner &&
+          <div className="bg-white text-black p-4 rounded-xl  w-full text-center max-w-[35rem]">
+            <Link href={`/collection/${item._id}/edit`}>Edit</Link>
+          </div>
+      }
+      {
+        !user && 
+          <div className="bg-white text-black p-4 rounded-xl  w-full text-center max-w-[35rem]">
+            <Link href="/login">Buy</Link>
+          </div>
+      }
+      {
+        user && user.id !== item.owner &&
+          <div className="bg-white text-black p-4 rounded-xl  w-full text-center max-w-[35rem]">
+            <Link href="/buy">Buy</Link>
+          </div>
+      } 
     </article>
   )
 }

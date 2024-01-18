@@ -1,6 +1,7 @@
 import { AuthContext } from "@app/contexts/AuthContext"
 import { Suspense, useContext } from "react"
 import Loader from "./Loader"
+import Link from "next/link"
 
 const BlogDetails = ({blog}) => {
   const { user } = useContext(AuthContext)
@@ -18,7 +19,7 @@ const BlogDetails = ({blog}) => {
           {user && user.id === blog.owner ? 
           (
             <div className="flex flex-col items-center gap-4">
-            <button className="bg-white w-full text-black p-4 rounded-xl text-center max-w-[35rem]">Edit</button>
+            <Link href={`/blog/${blog._id}/edit`} className="bg-white w-full text-black p-4 rounded-xl text-center max-w-[35rem]">Edit</Link>
             <button className="bg-white w-full text-black p-4 rounded-xl text-center max-w-[35rem]">Delete</button>
           </div>
           ) : (
