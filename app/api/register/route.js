@@ -8,7 +8,10 @@ export async function POST(request) {
 
   const data = await request.json()
   const { name, email, password } = data
-  //hash password
+  const existingUser = await User.findOne({ email });
+  if (existingUser) {
+    return new Response(JSON.stringify({ error: 'Email already exists' }))
+  }
   const hashedPassword = bcrypt.hashSync(password, 10)
   const user = {
     name: name,
@@ -18,7 +21,6 @@ export async function POST(request) {
   try {
     await User.create(user)
     const currentUser = await User.findOne({ email })
-    // jwt token
     const SECRET = process.env.NEXT_PUBLIC_SECRET
     const payload = {
       _id: currentUser.id,
@@ -27,7 +29,6 @@ export async function POST(request) {
     const token = await jwt.sign(payload, SECRET, {expiresIn: '3d'})
     return new Response(JSON.stringify(token))
   } catch (error) {
-    console.log(error)
-    return new Response(JSON.stringify(error))
+    return new Response(JSON.stringify({ error: 'Registration failed' }))
   }
 }

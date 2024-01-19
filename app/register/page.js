@@ -1,10 +1,10 @@
 'use client'
-import Container from '@components/Container'
 import Link from 'next/link'
 import { useContext, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { AuthContext } from '@app/contexts/AuthContext'
 import Section from '@components/Section'
+import { isEmail } from 'validator'
 
 const Register = () => {
 
@@ -18,6 +18,14 @@ const Register = () => {
   
   async function handleRegister(e) {
     e.preventDefault()
+    if (password !== confirmPassword || password < 8) {
+      console.log("invalid password")
+      return
+    }
+    if(!isEmail(email)) {
+      console.log('invalid email')
+      return
+    }
     const userData = {
       name: name,
       email: email,
@@ -29,11 +37,14 @@ const Register = () => {
       method: 'POST',
       body: JSON.stringify(userData),
     })
-    
-    const token = await response.json()
-    localStorage.setItem('token', JSON.stringify(token))
-    setUser(token)
-    router.push('/')
+    try {      
+      const token = await response.json()
+      localStorage.setItem('token', JSON.stringify(token))
+      setUser(token)
+      router.push('/')
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (

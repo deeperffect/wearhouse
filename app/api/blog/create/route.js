@@ -12,6 +12,11 @@ export async function POST(request) {
     description,
     owner: owner
   }
-  await BlogPost.create(newPost)
-  return new Response(JSON.stringify(newPost))
+  try {
+    await BlogPost.create(newPost)
+    return new Response(JSON.stringify(newPost))
+  } catch (error) {
+    console.log(error)
+    return new Response(JSON.stringify({ error: 'Create blog post failed' }), { status: 500 })
+  }
 }

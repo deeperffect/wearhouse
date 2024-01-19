@@ -1,4 +1,6 @@
+'use client'
 import ListedItems from "@components/user/ListedItems"
+import isAuth from "@app/utils/isAuth"
 
 const Profile = () => {
   return (
@@ -8,4 +10,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default isAuth(Profile)

@@ -6,6 +6,15 @@ export async function GET(request) {
   const url = request.url
   const itemIdRegex = /\/collection\/(\w+)/
   const itemId = url.match(itemIdRegex)[1]
-  const itemFound = await Item.findById(itemId)
-  return new Response(JSON.stringify(itemFound))
+  try {
+    const itemFound = await Item.findById(itemId)
+    if(!itemFound) {
+      console.log('Item not found')
+      return new Response(JSON.stringify({ error: 'Item not found' }), { status: 404 })
+    }
+    return new Response(JSON.stringify(itemFound))
+  } catch (error) {
+    console.log(error)
+    return new Response(JSON.stringify({ error: 'Error fetching blog' }), { status: 500 })
+  }
 }

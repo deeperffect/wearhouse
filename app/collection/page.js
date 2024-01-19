@@ -1,5 +1,5 @@
 import Section from "@components/Section"
-import Items from "@components/shared/Items"
+import Items from "@components/shared/Item/Items"
 import Searchbar from "@components/shared/Searchbar"
 
 

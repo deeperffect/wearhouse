@@ -11,7 +11,6 @@ const itemSchema = new mongoose.Schema({
     type: String,
     required: true,
     min: 8,
-    max: 50
   },
   price: {
     type: Number,
@@ -22,7 +21,6 @@ const itemSchema = new mongoose.Schema({
     type: String,
     required: true,
     min: 8,
-    max: 50
   },
   size: {
     type: String,

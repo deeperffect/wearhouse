@@ -1,6 +1,6 @@
 'use client'
 import Section from "@components/Section"
-import BlogDetails from "@components/shared/BlogDetails"
+import BlogDetails from "@components/shared/Blog/BlogDetails"
 import Loader from "@components/shared/Loader"
 import { Suspense, useEffect, useState } from "react"
 

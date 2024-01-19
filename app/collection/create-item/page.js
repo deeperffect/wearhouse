@@ -18,6 +18,27 @@ const CreateItem = () => {
 
   async function handleCreate(e) {
     e.preventDefault()
+  
+    if (title.length < 3 || title.length > 40) {
+      console.error('Invalid title length')
+      return
+    }
+  
+    if (description.length < 8) {
+      console.error('Invalid description length')
+      return
+    }
+  
+    if (isNaN(parseFloat(price)) || price < 1) {
+      console.error('Invalid price')
+      return
+    }
+  
+    if (image.length < 8) {
+      console.error('Invalid image URL length')
+      return
+    }
+  
     const itemData = {
       title: title,
       description: description,
@@ -26,19 +47,27 @@ const CreateItem = () => {
       size: size,
       sex: sex,
       category: category,
-      owner:  user.id
+      owner: user.id,
     }
-
-    const response = await fetch('/api/collection/create-item', {
-      method: 'POST',
-      body: JSON.stringify(itemData)
-    })
-
-    if(response.ok) {
-      console.log('item created')
-      router.push('/collection')
+  
+    try {
+      const response = await fetch('/api/collection/create-item', {
+        method: 'POST',
+        body: JSON.stringify(itemData),
+      })
+  
+      if (response.ok) {
+        console.log('Item created')
+        router.push('/collection')
+      } else {
+        const errorResponse = await response.json()
+        console.error('Create item failed:', errorResponse.error)
+      }
+    } catch (error) {
+      console.error('Create item failed:', error)
     }
   }
+  
 
   return (
     <Section>

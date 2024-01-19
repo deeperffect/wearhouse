@@ -1,13 +1,13 @@
 'use client'
 import { AuthContext } from "@app/contexts/AuthContext"
 import Section from "@components/Section"
-import BlogsOfficial from "@components/shared/BlogsOfficial"
+import BlogsOfficial from "@components/shared/Blog/BlogsOfficial"
 import Searchbar from "@components/shared/Searchbar"
-import BlogsUser from "@components/shared/BlogsUser"
+import BlogsUser from "@components/shared/Blog/BlogsUser"
 import Image from "next/image"
 import Link from "next/link"
 import { useContext } from "react"
-import BlogsFilter from "@components/shared/BlogsFilter"
+import BlogsFilter from "@components/shared/Blog/BlogsFilter"
 
 
 const Blog = () => {

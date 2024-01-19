@@ -36,6 +36,26 @@ const EditItem = ({params}) => {
 
   async function handleEdit(e) {
     e.preventDefault()
+    
+    if (title.length < 3 || title.length > 40) {
+      console.error('Invalid title length')
+      return
+    }
+  
+    if (description.length < 8) {
+      console.error('Invalid description length')
+      return
+    }
+  
+    if (isNaN(parseFloat(price)) || price < 1) {
+      console.error('Invalid price')
+      return
+    }
+  
+    if (image.length < 8) {
+      console.error('Invalid image URL length')
+      return
+    }
     const itemData = {
       title: title,
       description: description,

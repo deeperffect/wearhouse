@@ -12,22 +12,32 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { setUser } = useContext(AuthContext)
+  
   async function handleLogin(e) {
     e.preventDefault()
     const userData = {
       email: email,
       password: password
     }
-
-    const response = await fetch('/api/login', {
-      method: 'POST',
-      body: JSON.stringify(userData),}
-    )
-
-    const token = await response.json()
-    localStorage.setItem('token', JSON.stringify(token))
-    setUser(token)
-    router.push('/')
+  
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        body: JSON.stringify(userData)
+      })
+  
+      if (response.ok) {
+        const token = await response.json()
+        localStorage.setItem('token', JSON.stringify(token))
+        setUser(token)
+        router.push('/')
+      } else {
+        const errorResponse = await response.json()
+        console.error('Login failed:', errorResponse.error)
+      }
+    } catch (error) {
+      console.error('Login failed:', error)
+    }
   }
 
   return (

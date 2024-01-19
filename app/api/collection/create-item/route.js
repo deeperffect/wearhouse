@@ -14,9 +14,14 @@ export async function POST(request) {
     size,
     sex,
     category,
-    owner
+    owner,
   }
 
-  const createdItem = await Item.create(newItem)
-  return new Response(JSON.stringify(newItem))
+  try {
+    await Item.create(newItem)
+    return new Response(JSON.stringify(newItem))
+  } catch (error) {
+    console.error('Create item failed:', error)
+    return new Response(JSON.stringify({ error: 'Create item failed' }), { status: 500 });
+  }
 }

@@ -5,7 +5,7 @@ import Section from "@components/Section"
 import { useRouter } from "next/navigation"
 import { useContext, useState } from 'react'
 
-const CreatePost = () => {
+const CreateBlog = () => {
   const { user } = useContext(AuthContext)
   const [image, setImage] = useState('')
   const [title, setTitle] = useState('')
@@ -14,20 +14,44 @@ const CreatePost = () => {
 
   async function handleCreate(e) {
     e.preventDefault()
-    const itemData = {
+  
+    if (!image || image.length < 4) {
+      console.error('Invalid image URL length')
+      return
+    }
+  
+    if (!title || title.length < 3 || title.length > 40) {
+      console.error('Invalid title length')
+      return
+    }
+  
+    if (!description || description.length < 8) {
+      console.error('Invalid description length')
+      return
+    }
+  
+    const blogData = {
       image: image,
       title: title,
       description: description,
-      owner: user.id
-    }
-    const response = await fetch('/api/blog/create', {
-      method: 'POST',
-      body: JSON.stringify(itemData)
-    })
-
-    if(response.ok) {
-      console.log('item created')
-      router.push('/blog')
+      owner: user.id,
+    };
+  
+    try {
+      const response = await fetch('/api/blog/create', {
+        method: 'POST',
+        body: JSON.stringify(blogData),
+      });
+  
+      if (response.ok) {
+        console.log('Blog created')
+        router.push('/blog')
+      } else {
+        const errorResponse = await response.json()
+        console.error('Create blog failed:', errorResponse.error)
+      }
+    } catch (error) {
+      console.error('Create blog failed:', error)
     }
   }
 
@@ -55,4 +79,4 @@ const CreatePost = () => {
   )
 }
 
-export default isAuth(CreatePost)
+export default isAuth(CreateBlog)

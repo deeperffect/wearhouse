@@ -1,6 +1,6 @@
 'use client'
 import Section from "@components/Section"
-import ItemDetails from "@components/shared/ItemDetails"
+import ItemDetails from "@components/shared/Item/ItemDetails"
 import { useEffect, useState } from "react"
 
 const collectionId = ({ params }) => {

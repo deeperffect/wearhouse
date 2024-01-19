@@ -12,21 +12,46 @@ const EditPost = ({blogId}) => {
 
   async function handleEdit(e) {
     e.preventDefault()
+
+    if (!image || image.length < 4) {
+      console.error('Invalid image URL length')
+      return
+    }
+  
+    if (!title || title.length < 3 || title.length > 40) {
+      console.error('Invalid title length')
+      return
+    }
+  
+    if (!description || description.length < 8) {
+      console.error('Invalid description length')
+      return
+    }
+
     const itemData = {
       image: image,
       title: title,
       description: description,
     }
-    const response = await fetch(`{/api/blog/${blogId}/edit}`, {
-      method: 'POST',
-      body: JSON.stringify(itemData)
-    })
+    
+    try {
+
+      const response = await fetch(`{/api/blog/${blogId}/edit}`, {
+        method: 'POST',
+        body: JSON.stringify(itemData)
+      })
 
     if(response.ok) {
       console.log('item edited')
       router.push(`/blog/${blogId}`)
+    } else {
+      const errorResponse = await response.json()
+      console.error('Create blog failed:', errorResponse.error)
     }
+  } catch (error) {
+    console.error('Create blog failed:', error)
   }
+}
 
   return (
     <Section>     

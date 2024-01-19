@@ -1,7 +1,7 @@
 'use client'
 
 import { AuthContext } from "@app/contexts/AuthContext"
-import ItemCard from "@components/shared/ItemCard"
+import ItemCard from "@components/shared/Item/ItemCard"
 import { useContext, useEffect, useState } from "react"
 
 const ListedItems = () => {
