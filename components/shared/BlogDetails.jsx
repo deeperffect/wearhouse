@@ -34,7 +34,7 @@ const BlogDetails = ({blog, setBlog}) => {
               </div>
           }     
           {
-            user && !blog.likes?.includes(user.id) && 
+            user && !blog.likes?.includes(user.id) && user.id !==blog.owner &&
               <div className="flex flex-col items-center gap-4">
               <button onClick={handleLike} className="bg-white w-full text-black p-4 rounded-xl text-center max-w-[35rem]">Like</button>
               </div>

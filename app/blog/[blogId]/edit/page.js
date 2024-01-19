@@ -49,7 +49,7 @@ const EditBlog = ({params}) => {
   }
 
   async function handleDelete(e) {
-    e.preventDefault
+    e.preventDefault()
     const response = await fetch(`/api/blog/${params.blogId}/delete`, {
       method: 'DELETE'
     })

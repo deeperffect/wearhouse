@@ -62,7 +62,7 @@ const EditItem = ({params}) => {
   }
 
   async function handleDelete(e) {
-    e.preventDefault
+    e.preventDefault()
     const response = await fetch(`/api/collection/${params.collectionId}/delete`, {
       method: 'DELETE'
     })

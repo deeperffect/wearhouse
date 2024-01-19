@@ -20,6 +20,8 @@ const Header = () => {
           <div className='flex gap-4'>
             {user ? (
               <>
+                <Link href="/collection/create-item">+</Link>
+                <Link href="/profile">Profile</Link>
                 <Btn clickHandler={logoutUser}>Logout</Btn>
               </>
             )
