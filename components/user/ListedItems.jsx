@@ -26,11 +26,13 @@ const ListedItems = () => {
     <div>
       <h2>Listed Items</h2>
       {
-        userItems.map((card, index) => {
+        userItems ? (userItems.map((card, index) => {
           return (
-            <ItemCard card={card} key={index} />
+            <ItemCard card={card} key={index} />     
             )
-        })
+        })) : (
+          <div>You have not listed any items yet.</div>
+        )
       }
     </div>
   )

@@ -14,7 +14,6 @@ const Items = () => {
       } catch (error) {
         console.log("Error fetching iems:", error)
       }
-      
     }
     
     fetchItems()
@@ -22,9 +21,11 @@ const Items = () => {
 
   return (
     <>
-      {items.map((card, index) => (
+      {items ? (items.map((card, index) => (
         <ItemCard card={card} key={index} />
-      ))}
+      ))) : (
+        <div>No items have been listed yet.</div>
+      )}
     </>
   )
 }

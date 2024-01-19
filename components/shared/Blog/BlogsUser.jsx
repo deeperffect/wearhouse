@@ -20,9 +20,11 @@ const BlogsUser = () => {
 
   return (
     <div className="grid grid-cols-2 gap-4">
-      {blogs.map((card, index) => (
+      {blogs ? (blogs.map((card, index) => (
         <BlogCard card={card} key={index} />
-        ))}
+        ))) : (
+          <div>No user blogs have been created yet.</div>
+        )}
     </div>
   )
 }
