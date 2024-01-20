@@ -125,7 +125,7 @@ const EditItem = ({params}) => {
             <option value="shorts">Shorts</option>
             <option value="shoes">Shoes</option>
             <option value="socks">Socks</option>
-            <option value="acessories">Accessories</option>
+            <option value="accessories">Accessories</option>
             <option value="jewelry">Jewelry</option>
             <option value="others">Others</option>
           </select>
