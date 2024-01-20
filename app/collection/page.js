@@ -11,6 +11,7 @@ const Collection = () => {
       </Section>
       <Searchbar />
       <Section>
+        <h3 className="text-center text-2xl pb-4">All items</h3>
         <div className="grid grid-cols-3">
           <Items />
         </div>

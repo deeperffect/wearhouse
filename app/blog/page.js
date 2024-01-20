@@ -2,7 +2,6 @@
 import { AuthContext } from "@app/contexts/AuthContext"
 import Section from "@components/Section"
 import BlogsOfficial from "@components/shared/Blog/BlogsOfficial"
-import Searchbar from "@components/shared/Searchbar"
 import BlogsUser from "@components/shared/Blog/BlogsUser"
 import Image from "next/image"
 import Link from "next/link"
@@ -26,8 +25,6 @@ const Blog = () => {
 
         </header>  
       </Section>
-      <Searchbar />
-
       <Section>  
         <div className="grid grid-cols-[1fr_2fr] gap-4">
           <div>
