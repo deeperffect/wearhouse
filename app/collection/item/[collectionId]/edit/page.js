@@ -121,7 +121,6 @@ const EditItem = ({params}) => {
           <Select
             value={category}
             onChange={(e) => {
-              router.push(`${e.target.value}`)
               setCategory(e.target.value)
             }}
             id='category'
@@ -132,7 +131,6 @@ const EditItem = ({params}) => {
           <Select
             value={sex}
             onChange={(e) => {
-              router.push(`${e.target.value}`)
               setSex(e.target.value)
             }}
             id='sex'
@@ -143,7 +141,6 @@ const EditItem = ({params}) => {
           <Select
             value={size}
             onChange={(e) => {
-              router.push(`${e.target.value}`)
               setSize(e.target.value)
             }}
             id='size'

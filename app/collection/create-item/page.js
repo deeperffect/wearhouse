@@ -60,7 +60,7 @@ const CreateItem = () => {
   
       if (response.ok) {
         console.log('Item created')
-        router.push('/collection')
+        router.push('/collection/all')
       } else {
         const errorResponse = await response.json()
         console.error('Create item failed:', errorResponse.error)
@@ -97,7 +97,6 @@ const CreateItem = () => {
           <Select
             value={category}
             onChange={(e) => {
-              router.push(`${e.target.value}`)
               setCategory(e.target.value)
             }}
             id='category'
@@ -108,7 +107,6 @@ const CreateItem = () => {
           <Select
             value={sex}
             onChange={(e) => {
-              router.push(`${e.target.value}`)
               setSex(e.target.value)
             }}
             id='sex'
@@ -119,7 +117,6 @@ const CreateItem = () => {
           <Select
             value={size}
             onChange={(e) => {
-              router.push(`${e.target.value}`)
               setSize(e.target.value)
             }}
             id='size'
