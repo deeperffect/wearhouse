@@ -5,13 +5,13 @@ const SidebarItems = () => {
   return (
     <nav className="flex flex-col gap-8 text-black">
       <ul>
-        {CATEGORIES.map((category) => {
+        {CATEGORIES.map(({value, text}) => {
           return (
-            <li>
-              <Link href={category.value}>{category.text}</Link>
+            <li key={value}>
+              <Link href={value}>{text}</Link>
             </li>
-            )
-          })}
+          )
+        })}
       </ul>
     </nav>
   )
