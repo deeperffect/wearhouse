@@ -1,18 +1,15 @@
-import { useEffect } from "react"
+import { CheckboxesContext } from "@app/contexts/CheckboxesContext"
+import { useContext } from "react"
 
-const Checkbox = ({ id, text, changeHandler, checked}) => {
-	useEffect(()=>{
-		console.log('checkbox:', checked)
-
-	}, [checked])
+const Checkbox = ({ id, text }) => {
+	const { onCheck } = useContext(CheckboxesContext)
 	return (
 		<div className="text-black uppercase">
 			<input
 			type="checkbox"
 			id={id}
 			name={id}
-			onChange={changeHandler}
-			checked={!!checked}
+			onChange={(e) => onCheck(e)}
 			/>
 			<label htmlFor={id}>{text}</label>
 		</div>

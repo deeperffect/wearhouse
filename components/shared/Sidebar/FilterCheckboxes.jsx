@@ -1,17 +1,15 @@
 import Checkbox from "./Checkbox"
 
-const FilterCheckboxes = ({listChecks, changeHandler, checks}) => {
+const FilterCheckboxes = ({ listChecks }) => {
 	return (
   		<div>
 			{
-				listChecks.map((listItem, index) => {
+				listChecks.map((listItem) => {
 					return(
 						<Checkbox
 							key={`check_${listItem.value}`}
 							id={listItem.value}
 							text={listItem.text}
-							checked={checks[index]}
-							changeHandler={(e) => changeHandler(e, index)}
 						/>
 					)
 				})
