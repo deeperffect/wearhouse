@@ -1,14 +1,18 @@
 'use client'
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import ItemCard from './ItemCard'
 import { CheckboxesContext } from '@app/contexts/CheckboxesContext'
 
 const Items = ({ category }) => {
 	const [items, setItems] = useState([])
-	const { checkedBoxes } = useContext(CheckboxesContext)
+	const [filteredItems, setFilteredItems] = useState([])
+	const { sexesArray, sizesArray } = useContext(CheckboxesContext)
+	const sexNames = sexesArray.filter((sex) => sex.checked).map((sex) => sex.value)
+	const sizeNames = sizesArray.filter((size) => size.checked).map((size) => size.value)
+	const filterLength = sexNames.length + sizeNames.length
+	const itemsToDisplay = filterLength ? filteredItems : items
 
-	useEffect(() => {
-		
+	useEffect(() => {	
 		async function filterByCategory(category) {
 			try {
 				const response = await fetch(`/api/collection/${category}`, { method: "GET" })
@@ -21,32 +25,25 @@ const Items = ({ category }) => {
 			} catch (error) {
 				console.log("Error fetching items:", error)
 			}
+		}	
+
+		function filterByCheckboxes() {
+			const filteredItems = items.filter((item) => sexNames.length ? sexNames.includes(item.sex) : true).filter((item) => sizeNames.length ? sizeNames.includes(item.size) : true)
+			setFilteredItems(filteredItems)
 		}
-		
+
 		filterByCategory(category)
-
-	}, [category])
-
-	useEffect(() => {
-		function filterByCheckedBoxes() {
-			const filteredItems = items.filter((item) => {
-				return checkedBoxes.some((checkedBox) => item.sex === checkedBox || item.size === checkedBox)
-			})
-			setItems(filteredItems)
-			console.log(checkedBoxes)
-		}
-	
-		filterByCheckedBoxes()
-	}, [checkedBoxes])
-
+		filterByCheckboxes()
+	}, [category, sexesArray, sizesArray])
 
 	return (
 		<>
-			{items.length > 0 ? (items.map((card, index) => (
+			{itemsToDisplay.length > 0 ? (itemsToDisplay.map((card, index) => (
 				<ItemCard card={card} key={index} />
 				))) : (
-				<div>No items have been listed yet.</div>
-				)}
+					<div>No items to display.</div>
+				)
+			}
 		</>
   )
 }

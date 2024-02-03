@@ -5,6 +5,22 @@ import { useContext } from "react"
 const ItemDetails = ({item}) => {
   const { user } = useContext(AuthContext)
 
+  async function handleAdd() {
+    const response = await fetch(`/collection/item/${item._id}/fav-add`, {
+      method: "POST",
+      body: JSON.stringify({
+        userId: user.id,
+        itemId: item._id
+      })
+    })
+  }
+
+  async function handleRemove() {
+    const response = await fetch(`/collection/item/${item._id}/fav-remove`, {
+      method: "DELETE"
+    })
+  }
+
   return (
     <article className="flex flex-col items-center"> 
       <header>
@@ -32,10 +48,26 @@ const ItemDetails = ({item}) => {
           </div>
       }
       {
-        user && user.id !== item.owner &&
+        user && user.id !== item.owner && !item.favorites?.includes(user.id) &&
+        <>
+          <div className="bg-white text-black p-4 rounded-xl  w-full text-center max-w-[35rem]">
+            <Link href={`/collection/item/${item._id}/buy`}>Buy</Link>
+          </div>
+           <div className="bg-white text-black p-4 rounded-xl  w-full text-center max-w-[35rem]">
+            <button onClick={handleAdd}>Add to Favorites</button>
+           </div>
+        </>
+      }
+      {
+        user && user.id !== item.owner && item.favorites?.includes(user.id) &&
+        <>
           <div className="bg-white text-black p-4 rounded-xl  w-full text-center max-w-[35rem]">
             <Link href="/buy">Buy</Link>
           </div>
+          <div className="bg-white text-black p-4 rounded-xl  w-full text-center max-w-[35rem]">
+            <button onClick={handleRemove}>Remove from Favorites</button>
+          </div>
+        </>
       } 
     </article>
   )
