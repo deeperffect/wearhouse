@@ -1,5 +1,5 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
 const Logo = () => {
   return (
@@ -7,6 +7,6 @@ const Logo = () => {
       <Image className="w-full h-auto" src="/assets/images/logo2.svg" alt="logo" width={96} height={32} />
     </Link>
   )
-}
+};
 
-export default Logo
+export default Logo;

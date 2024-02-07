@@ -1,44 +1,44 @@
 'use client'
-import { AuthContext } from "@app/contexts/AuthContext"
-import Container from "@components/Container"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { useState } from 'react'
-import { useContext } from "react"
+import { AuthContext } from "@app/contexts/AuthContext";
+import Container from "@components/Container";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from 'react';
+import { useContext } from "react";
 
 
 const Login = () => {
-  const router = useRouter()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const { setUser } = useContext(AuthContext)
+	const router = useRouter();
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const { setUser } = useContext(AuthContext);
   
-  async function handleLogin(e) {
-    e.preventDefault()
-    const userData = {
-      email: email,
-      password: password
-    }
+	async function handleLogin(e) {
+		e.preventDefault();
+		const userData = {
+			email: email,
+			password: password
+		};
   
-    try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        body: JSON.stringify(userData)
-      })
+	try {
+		const response = await fetch('/api/login', {
+			method: 'POST',
+			body: JSON.stringify(userData)
+		});
   
-      if (response.ok) {
-        const token = await response.json()
-        localStorage.setItem('token', JSON.stringify(token))
-        setUser(token)
-        router.push('/')
-      } else {
-        const errorResponse = await response.json()
-        console.error('Login failed:', errorResponse.error)
-      }
-    } catch (error) {
-      console.error('Login failed:', error)
-    }
-  }
+	if (response.ok) {
+		const token = await response.json();
+		localStorage.setItem('token', JSON.stringify(token));
+		setUser(token);
+		router.push('/');
+	} else {
+		const errorResponse = await response.json();
+		console.error('Login failed:', errorResponse.error);
+	};
+	} catch (error) {
+		console.error('Login failed:', error);
+	};
+};
 
   return (
     <section>
@@ -61,6 +61,6 @@ const Login = () => {
       </Container>
     </section>
   )
-}
+};
 
 export default Login

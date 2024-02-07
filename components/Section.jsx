@@ -1,13 +1,13 @@
-import Container from "./Container"
+import Container from "./Container";
 
 const Section = ({ children }) => {
-  return (
-    <section>
-      <Container>
-        { children }
-      </Container>
-    </section>
-  )
-}
+	return (
+		<section>
+			<Container>
+				{ children }
+			</Container>
+		</section>
+	)
+};
 
-export default Section
+export default Section;

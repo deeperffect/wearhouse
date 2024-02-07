@@ -1,19 +1,19 @@
-import './globals.css'
-import Header from '@components/shared/Header'
-import { Poppins } from 'next/font/google'
-import { AuthProvider } from './contexts/AuthContext'
+import './globals.css';
+import Header from '@components/shared/Header';
+import { Poppins } from 'next/font/google';
+import { AuthProvider } from './contexts/AuthContext';
 
 
 export const metadata = {
   title: 'Wearhouse',
   description: 'The platform for your style',
-}
+};
 
 const poppins = Poppins({
   variable: '--font-poppins',
   subsets: ['latin-ext'],
   weight: ['300', '400', '500', '600', '700'],
-})
+});
 
 function RootLayout({ children }) {
   return (
@@ -29,6 +29,6 @@ function RootLayout({ children }) {
     
     </html>
   )
-}
+};
 
-export default RootLayout
+export default RootLayout;

@@ -1,15 +1,15 @@
 'use client'
-import Section from "@components/Section"
-import Items from "@components/shared/Item/Items"
-import Searchbar from "@components/shared/Searchbar"
-import Sidebar from "@components/shared/Sidebar/Sidebar"
-import { useParams } from "next/navigation"
-import { useState } from "react"
-import { CheckboxesProvider } from "@app/contexts/CheckboxesContext"
+import Section from "@components/Section";
+import Items from "@components/shared/Item/Items";
+import Searchbar from "@components/shared/Searchbar";
+import Sidebar from "@components/shared/Sidebar/Sidebar";
+import { useParams } from "next/navigation";
+import { useState } from "react";
+import { CheckboxesProvider } from "@app/contexts/CheckboxesContext";
 
 const Collection = () => {
-	const params = useParams()
-	const [category, setCategory] = useState(params.collectionName)
+	const params = useParams();
+	const [category, setCategory] = useState(params.collectionName);
 
 	return (
 		<>
@@ -28,6 +28,6 @@ const Collection = () => {
 			</CheckboxesProvider>
 		</>
 	)
-}
+};
 
-export default Collection
+export default Collection;

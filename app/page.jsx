@@ -1,6 +1,6 @@
-import Section from "@components/Section"
-import HomeCards from "@components/shared/HomeCards/HomeCards"
-import Searchbar from "@components/shared/Searchbar"
+import Section from "@components/Section";
+import HomeCards from "@components/shared/HomeCards/HomeCards";
+import Searchbar from "@components/shared/Searchbar";
 
 function Home() {
 	return (
@@ -12,6 +12,6 @@ function Home() {
 			</div>
 		</Section>
 	)
-}
+};
 
-export default Home
+export default Home;

@@ -38,6 +38,10 @@ const itemSchema = new mongoose.Schema({
     type: mongoose.Types.ObjectId,
     ref: 'User',
   },
+  favorites: [{
+    type: mongoose.Types.ObjectId,
+    ref: 'User',
+  }],
 },
 { timestamps: true }
 )

@@ -1,33 +1,33 @@
 'use client'
-import Section from "@components/Section"
-import BlogDetails from "@components/shared/Blog/BlogDetails"
-import Loader from "@components/shared/Loader"
-import { Suspense, useEffect, useState } from "react"
+import Section from "@components/Section";
+import BlogDetails from "@components/shared/Blog/BlogDetails";
+import Loader from "@components/shared/Loader";
+import { Suspense, useEffect, useState } from "react";
 
 
 const BlogDetailsPage = ({ params }) => {
-  const [blog, setBlog] = useState({})
+	const [blog, setBlog] = useState({});
 
-  useEffect(() => {
-    async function fetchBlog() {
-      try{
-        const response = await fetch(`/api/blog/${params.blogId}`, {method: "GET"})
-        const blogFound = await response.json() 
-        setBlog(blogFound)  
-      } catch (error) {
-        console.log("Error fetching blog:", error)
-      }
-    }
-    fetchBlog()
-  }, [])
+	useEffect(() => {
+		async function fetchBlog() {
+			try{
+				const response = await fetch(`/api/blog/${params.blogId}`, {method: "GET"});
+				const blogFound = await response.json(); 
+				setBlog(blogFound) ; 
+			} catch (error) {
+				console.log("Error fetching blog:", error);
+			}
+		}
+		fetchBlog();
+	}, []);
   
-  return (
-    <Section>
-      <Suspense fallback={<Loader />}>
-        <BlogDetails blog={blog} setBlog={setBlog}/>
-      </Suspense>
-    </Section>
-  )
-}
+	return (
+		<Section>
+			<Suspense fallback={<Loader />}>
+				<BlogDetails blog={blog} setBlog={setBlog}/>
+			</Suspense>
+		</Section>
+	)
+};
 
-export default BlogDetailsPage
+export default BlogDetailsPage;

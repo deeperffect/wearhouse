@@ -1,35 +1,31 @@
 'use client'
-import { AuthContext } from "@app/contexts/AuthContext"
-import Section from "@components/Section"
-import Blogs from "@components/shared/Blog/Blogs"
-import Image from "next/image"
-import Link from "next/link"
-import { useContext, useEffect, useState } from "react"
+import { AuthContext } from "@app/contexts/AuthContext";
+import Section from "@components/Section";
+import Blogs from "@components/shared/Blog/Blogs";
+import Image from "next/image";
+import Link from "next/link";
+import { useContext, useEffect, useState } from "react";
 
 
 const Blog = () => {
-  const { user } = useContext(AuthContext)
-  const [blogsUser, setBlogsUser] = useState([])
-  const [blogsOfficial, setBlogsOfficial] = useState([])
-  useEffect(() => {
-    async function fetchBlogs() {
-      try {
-        const response = await fetch('/api/blog', { method: "GET" })
-        const [userBlogs, officialBlogs] = await response.json()
+	const { user } = useContext(AuthContext);
+	const [blogsUser, setBlogsUser] = useState([]);
+	const [blogsOfficial, setBlogsOfficial] = useState([]);
+	useEffect(() => {
+		async function fetchBlogs() {
+			try {
+				const response = await fetch('/api/blog', { method: "GET" });
+				const [userBlogs, officialBlogs] = await response.json();
+				setBlogsUser(userBlogs);
+				setBlogsOfficial(officialBlogs);
+			} catch (error) {
+				console.error("Error fetching blogs:", error);
+			};
+		};
+		fetchBlogs();
+	}, []);
 
-        setBlogsUser(userBlogs)
-        setBlogsOfficial(officialBlogs)
-      } catch (error) {
-        console.error("Error fetching blogs:", error)
-      }
-    }
-
-    fetchBlogs()
-
-  }, [])
-
-  return (
-    
+  return ( 
     <>
       <Section>   
         <figure>
@@ -56,6 +52,6 @@ const Blog = () => {
       </Section>  
     </>
   )
-}
+};
 
-export default Blog
+export default Blog;
