@@ -27,28 +27,23 @@ const Blog = () => {
 
   return ( 
     <>
-      <Section>   
+      <div className="max-w-full">   
         <figure>
-          <Image src="/assets/images/pic1.jpg" alt="pic1" width={1024} height={36} />
+          <Image src="/assets/images/pic1.jpg" alt="pic1" width={2048} height={36} />
         </figure>   
-        <header className="text-center">
+        <header className="pt-8 text-center">
           <h2 className="text-3xl uppercase font-bold">Learn more about different styles</h2>
-          <h2 className="p-2 text-2xl uppercase font-bold">or</h2>
-          <Link href={user? "/blog/create" : "/login"} className="text-3xl uppercase font-bold">Show your Own Style</Link>
-
+          <h2 className="p-4 text-2xl uppercase font-bold">or</h2>
+          <Link href={user? "/blog/create" : "/login"} className="text-xl uppercase font-bold rounded-full hover:bg-lightOrange bg-darkOrange p-3 px-6">Show your Own Style</Link>
         </header>  
+      </div>
+      <Section>            
+          <h2 className="py-8 text-2xl text-center md:text-start">Official posts</h2>
+          <Blogs blogs={blogsOfficial} className="gap-4 md:grid grid-cols-3"/> 
       </Section>
-      <Section>  
-        <div className="grid grid-cols-[1fr_2fr] gap-4">
-          <div>
-            <h2 className="text-2xl font-bold pb-4">Official posts</h2>
-            <Blogs blogs={blogsOfficial} className="grid"/>
-          </div>
-          <div>
-            <h2 className="text-2xl font-bold pb-4">User posts</h2>                 
-            <Blogs blogs={blogsUser} className="grid grid-cols-2 gap-4"/>
-          </div>    
-        </div>    
+      <Section>
+          <h2 className="py-8 text-2xl text-center md:text-start">User posts</h2>                 
+          <Blogs blogs={blogsUser} className="gap-4 md:grid grid-cols-3"/>
       </Section>  
     </>
   )

@@ -34,14 +34,14 @@ const Searchbar = () => {
 					<button onClick={handleSearch} className="bg-white p-1.5 w-16 rounded-xl">Go</button>
 				</div>
 			</Container>
-			<Section>
+			<div className="grid grid-cols-2 lg:grid-cols-3">
 				{
 					result?.length > 0 && result.map((card) => {
 						return (
 							<ItemCard card={card} key={card._id}/>)
 						})
 				}
-			</Section>
+			</div>
 		</>
 	)
 };

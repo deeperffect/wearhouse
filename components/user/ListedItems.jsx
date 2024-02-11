@@ -23,15 +23,14 @@ const ListedItems = () => {
 
 
 	return (
-		<div>
-			<h2>Listed Items</h2>
-				{
-					userItems ? (userItems.map((card, index) => {
-						return (
-							<ItemCard card={card} key={index} />     
-						)
-					})) : (
-						<div>You have not listed any items yet.</div>
+		<div className="grid grid-cols-1 md:grid-cols-2">
+			{
+				userItems && userItems.length > 0 ? (userItems.map((card, index) => {
+					return (
+						<ItemCard card={card} key={index} />     
+					)
+				})) : (
+					<div>You have not listed any items yet.</div>
 					)
 				}
 		</div>

@@ -88,7 +88,7 @@ const EditItem = ({params}) => {
 
 		if(response.ok) {
 			console.log('item deleted');
-			router.push('/collection');
+			router.push('/collection/all');
 		}
 	};
   

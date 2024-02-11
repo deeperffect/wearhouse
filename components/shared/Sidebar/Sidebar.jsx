@@ -10,11 +10,13 @@ const Sidebar = () => {
     const { sexesArray, sizesArray, handleChangeSexes, handleChangeSizes } = useContext(CheckboxesContext)
 
     return (
-        <div className="bg-gray-200 max-w-fit p-6 h-svh border-r-4 border-t-4 border-slate-600">
-            <SidebarItems />
-            <MemoizedFilterCheckboxes handleChange={handleChangeSexes} listChecks={sexesArray} />
-            <MemoizedFilterCheckboxes handleChange={handleChangeSizes} listChecks={sizesArray} />
-        </div>
+        <aside className="sticky top-headerHeight h-pageHeight overflow-y-auto text-black bg-white px-4 text-sm pt-2 items-start">
+            <div className='flex flex-col gap-4'>
+                <SidebarItems />
+                <MemoizedFilterCheckboxes handleChange={handleChangeSexes} title='Sex' listChecks={sexesArray} />
+                <MemoizedFilterCheckboxes handleChange={handleChangeSizes} title='Size' listChecks={sizesArray} />
+            </div>
+        </aside>
     )
 }
 

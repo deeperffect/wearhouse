@@ -4,37 +4,57 @@ import Navbar from './Navbar';
 import Logo from './Logo';
 import Link from 'next/link';
 import Btn from './Btn';
-import { useContext } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '@app/contexts/AuthContext';
+import HamburgerButton from './HamburgerButton';
+import { useHeaderHeight } from '@hooks/useHeaderHeight';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
 	const { user, logoutUser } = useContext(AuthContext);
+	const [isActive, setIsActive] = useState(false);
+	const headerRef = useHeaderHeight();
+	const pathname = usePathname();
+
+	useEffect(() => {
+		document.documentElement.classList.toggle('overflow-hidden', isActive);
+	}, [isActive]);
+
+	useEffect(() => {
+		setIsActive(false);
+	}, [pathname]);
+
+	function toggleHeader() {
+		setIsActive(!isActive);
+	};
 
 	return (
-
-		<header className='bg-gray-200 text-black py-2'>
+		<header ref={headerRef} className='bg-gray-200 text-black py-2 fixed left-0 right-0 z-50'>
 			<Container>
 				<div className='flex items-center justify-between'>
 					<Logo />
-					<Navbar />
-					<div className='flex gap-4'>
-						{
-							user ? (
-								<>
-									<Link href="/collection/create-item">+</Link>
-									<Link href="/profile">Profile</Link>
-									<Btn clickHandler={logoutUser}>Logout</Btn>
-								</>
-							)
-							:
-							(
-								<>
-									<Link href="/register">Register</Link>
-									<Link href="/login">Login</Link>
-								</>
-							)
-						}
+					<div className={`header-menu ${isActive ? 'translate-x-0' : 'translate-x-full'} duration-300 transition-transform fixed bg-white bottom-0 top-headerHeight z-50 left-0 w-full py-8 px-2 flex flex-col justify-between gap-4 lg:gap-0 lg:contents lg:static`}>
+						<Navbar />
+						<div className='flex lg:gap-4 gap-2 flex-col items-start text-lg lg:flex-row lg:items-center'>
+							{
+								user ? (
+									<>
+										<Link href="/collection/create-item">+</Link>
+										<Link href="/profile">Profile</Link>
+										<Btn clickHandler={logoutUser}>Logout</Btn>
+									</>
+								)
+								:
+								(
+									<>
+										<Link href="/register">Register</Link>
+										<Link href="/login">Login</Link>
+									</>
+								)
+							}
+						</div>
 					</div>
+					<HamburgerButton handleClick={toggleHeader} isActive={isActive} />
 				</div>
 			</Container>
 		</header>

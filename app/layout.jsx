@@ -20,8 +20,8 @@ function RootLayout({ children }) {
     <html lang="en">
       <AuthProvider>
         <body className={poppins.className}>
-          <main>
-            <Header />
+          <Header />
+          <main className='pt-headerHeight'>
             {children}
           </main>
         </body>

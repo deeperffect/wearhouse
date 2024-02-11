@@ -12,6 +12,21 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors: {
+        darkOrange: '#CC742D',
+        lightOrange: '#C78D5E',
+        darkBlue: '#223',
+        midBlue: '#37374E',
+        lightBlue: '#ABABE4'
+      },
+      transitionProperty: {
+        margin: 'margin',
+        hamburgerButton: 'transform, margin',
+      },
+      spacing: {
+        headerHeight: 'var(--header-height, 0px)',
+        pageHeight: 'calc(100vh - var(--header-height, 0px))'
+      },
     },
   },
   plugins: [],

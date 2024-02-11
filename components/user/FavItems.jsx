@@ -22,17 +22,16 @@ const FavItems = () => {
 
 
 	return (
-		<div>
-			<h2>Favorite Items</h2>
-				{
-					favItems ? (favItems.map((card, index) => {
-						return (
-							<ItemCard card={card} key={index} />     
-						)
-					})) : (
-						<div>You have not added any items to favorites yet.</div>
+		<div className="grid grid-cols-1 md:grid-cols-2">
+			{
+				favItems && favItems.length > 0 ? (favItems.map((card, index) => {
+					return (
+						<ItemCard card={card} key={index} />     
 					)
-				}
+				})) : (
+					<div>You have not added any items to favorites yet.</div>
+				)
+			}
 		</div>
 	)
 };
