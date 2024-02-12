@@ -55,6 +55,7 @@ const CreateBlog = () => {
 		<Section>     
 			<header>
 				<h2 className="text-3xl p-4 text-center font-bold">Create post</h2>
+				<h3 className="text-base p-4 text-center">Please fill out the information below:</h3>
 			</header>
 			<form className="text-black max-w-[30rem] mx-auto p-4">
 				<div className="pb-4">

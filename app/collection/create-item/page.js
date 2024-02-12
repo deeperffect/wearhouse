@@ -70,6 +70,7 @@ const CreateItem = () => {
 		<Section>
 			<header>
 				<h2 className="text-3xl p-4 text-center font-bold">Create listing</h2>
+				<h2 className="text-base p-4 text-center">Please fill out the information about the item:</h2>
 			</header>
 			<form className="text-black max-w-[30rem] mx-auto p-4">
 				<div className="pb-4">
@@ -77,7 +78,7 @@ const CreateItem = () => {
 					value={title} onChange={(e) => setTitle(e.target.value)} />  
 				</div>
 				<div className="pb-4">
-					<input className="rounded-md max-w-full w-full p-2 leading-none" type="text" placeholder="Description.."
+					<textarea rows="4" className="rounded-md max-w-full w-full p-2 leading-none" type="text" placeholder="Description.."
 					value={description} onChange={(e) => setDescription(e.target.value)}/>
 				</div>
 				<div className="pb-4">

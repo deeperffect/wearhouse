@@ -9,6 +9,7 @@ import { AuthContext } from '@app/contexts/AuthContext';
 import HamburgerButton from './HamburgerButton';
 import { useHeaderHeight } from '@hooks/useHeaderHeight';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 const Header = () => {
 	const { user, logoutUser } = useContext(AuthContext);
@@ -39,17 +40,18 @@ const Header = () => {
 							{
 								user ? (
 									<>
-										<Link href="/collection/create-item">+</Link>
-										<Link href="/profile">Profile</Link>
+										<Link href="/collection/create-item">
+											<Image src="/assets/icons/plus.svg" alt="plus icon" width={32} height={32}/>
+										</Link>
+										<Link href="/profile">
+											<Image src="/assets/icons/profile.svg" alt="profile icon" width={32} height={32}/>
+										</Link>
 										<Btn clickHandler={logoutUser}>Logout</Btn>
 									</>
 								)
 								:
 								(
-									<>
-										<Link href="/register">Register</Link>
-										<Link href="/login">Login</Link>
-									</>
+									<Link className="block p-2 px-4 text-white bg-darkOrange hover:bg-lightOrange rounded-full baseline" href="/login">Login</Link>
 								)
 							}
 						</div>
