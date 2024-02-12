@@ -1,6 +1,5 @@
 import connectDB from "@app/utils/connectDB"
 import BlogPost from "@models/BlogPost"
-
 export async function POST(request) {
 	await connectDB();
 	const data = await request.json();

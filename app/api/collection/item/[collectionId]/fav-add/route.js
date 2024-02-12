@@ -1,6 +1,5 @@
 import connectDB from "@app/utils/connectDB";
 import Item from "@models/Item";
-
 export async function POST(request) {
 	await connectDB();
 	const { userId, itemId } = await request.json();

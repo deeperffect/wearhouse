@@ -1,6 +1,5 @@
 import connectDB from "@app/utils/connectDB";
 import BlogPost from "@models/BlogPost";
-
 export async function PATCH(request) {
 	await connectDB();
 	const { blogData, blogId } = await request.json();

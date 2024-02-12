@@ -1,6 +1,5 @@
 import connectDB from "@app/utils/connectDB";
 import Item from "@models/Item";
-
 export async function GET(request, params) {
 	await connectDB();
 	const userId = params.params.userId;

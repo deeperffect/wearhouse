@@ -1,6 +1,5 @@
 import connectDB from "@app/utils/connectDB";
 import BlogPost from "@models/BlogPost";
-
 export async function GET(request) {
 	await connectDB();
 	const numberOfBlogs = request.nextUrl.searchParams.get('limit');

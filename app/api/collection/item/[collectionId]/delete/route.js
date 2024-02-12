@@ -1,6 +1,5 @@
 import connectDB from "@app/utils/connectDB";
 import Item from "@models/Item";
-
 export async function DELETE(request, params) {
 	await connectDB();
 	const itemId = params.params.collectionId;

@@ -2,7 +2,6 @@ import connectDB from "@app/utils/connectDB";
 import User from "@models/User";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-
 export async function POST(request) {
 	await connectDB();
 	const SECRET = process.env.NEXT_PUBLIC_SECRET;
