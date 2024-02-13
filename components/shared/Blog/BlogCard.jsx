@@ -1,12 +1,30 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const BlogCard = ({ card }) => {
+	const date = card.createdAt;
+	const dateObject = new Date(date);
+	const month = dateObject.toLocaleString('default', { month: 'short' });
+	const day = dateObject.getDate();
+	const year = dateObject.getFullYear();
+	const formattedDate = `${month} ${day} ${year}`;
 	return (
 		<article className="">
 			<Link href={`/blog/${card._id}`}>
 			<figure className="pb-[56.25%] relative">
 				<img className="absolute inset-0 w-full h-full object-cover object-center" src={card.image} alt={card.title} width={300} height={32}/>
-				<p className="absolute bottom-0 left-0 py-1 px-2 rounded-tr-lg max-w-full bg-black/50">{card.createdAt}</p>
+				<p className="absolute bottom-0 left-0 py-1 px-2 rounded-tr-lg max-w-full bg-black/50">{formattedDate}</p>
+				{
+					card.likes.length > 0 &&
+					<>
+						<Image className="absolute bottom-0 right-0 py-2 px-1 max-w-full"
+						src="/assets/icons/heart.svg"
+						alt="heart icon"
+						width={32}
+						height={32} />
+						<p className="absolute bottom-0 right-0 py-2 px-9 max-w-full">{card.likes.length}</p>
+					</>
+				}
 			</figure>
 			<div className="py-4 px-2">
 				<header className="pb-4">

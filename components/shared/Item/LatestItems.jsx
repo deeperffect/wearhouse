@@ -8,7 +8,7 @@ const LatestItems = () => {
 	useEffect(() => {
 		async function fetchLatest() {
 			try {
-				const response = await fetch(`/api/collection/latest?limit=4`, { method: "GET" });
+				const response = await fetch(`/api/collection/latest?limit=6`, { method: "GET" });
 				const data = await response.json();
 				if (data.length === 0) {
 				console.log('No items found')
