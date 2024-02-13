@@ -15,7 +15,8 @@ const Blog = () => {
 		async function fetchBlogs() {
 			try {
 				const response = await fetch('/api/blog', { method: "GET" });
-				const [userBlogs, officialBlogs] = await response.json();
+				const data = await response.json();
+				const { userBlogs, officialBlogs } = data[0];
 				setBlogsUser(userBlogs);
 				setBlogsOfficial(officialBlogs);
 			} catch (error) {
