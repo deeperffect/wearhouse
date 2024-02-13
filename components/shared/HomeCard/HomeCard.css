@@ -93,16 +93,14 @@
 .card-inner:hover h2 {
   color: rgb(204, 116, 45);
   display: flex;
-  justify-content: center;
 }
 
 .card-inner:hover p {
   color: rgb(171, 171, 228);
   display: flex;
-  justify-content: center;
 }
 
 .card-inner:hover span {
-  display: none;
+  display: flex;
 }
 

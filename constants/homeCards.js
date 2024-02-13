@@ -4,7 +4,7 @@ export const HOME_CARDS = [
     title: 'Buy',
     description: 'Enhance your style',
     image: '/assets/images/card1.jpg',
-    link: '/collection'
+    link: '/collection/all'
   },
   {
     id: 'card-2',

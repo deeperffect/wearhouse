@@ -30,11 +30,11 @@ const Header = () => {
 	};
 
 	return (
-		<header ref={headerRef} className='bg-gray-200 text-black py-2 fixed left-0 right-0 z-50'>
+		<header ref={headerRef} className='bg-gray-200 text-black py-2 fixed top-0 left-0 right-0 z-50'>
 			<Container>
 				<div className='flex items-center justify-between'>
 					<Logo />
-					<div className={`header-menu ${isActive ? 'translate-x-0' : 'translate-x-full'} duration-300 transition-transform fixed bg-white bottom-0 top-headerHeight z-50 left-0 w-full py-8 px-2 flex flex-col justify-between gap-4 lg:gap-0 lg:contents lg:static`}>
+					<div className={`overflow-y-auto header-menu ${isActive ? 'translate-x-0' : 'translate-x-full'} duration-300 transition-transform fixed bg-white bottom-0 top-headerHeight z-50 left-0 w-full py-8 px-2 flex flex-col justify-between gap-4 lg:gap-0 lg:contents lg:static`}>
 						<Navbar />
 						<div className='flex lg:gap-4 gap-2 flex-col items-start text-lg lg:flex-row lg:items-center'>
 							{

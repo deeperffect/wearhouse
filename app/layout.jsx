@@ -19,7 +19,7 @@ function RootLayout({ children }) {
   return (
     <html lang="en">
       <AuthProvider>
-        <body className={poppins.className}>
+        <body className={`${poppins.className}`}>
           <Header />
           <main className='pt-headerHeight'>
             {children}

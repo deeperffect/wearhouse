@@ -8,11 +8,11 @@ const Profile = () => {
 	return (
 		<>
 			<Section>
-				<h2 className="text-xl py-8 text-center">Listed items</h2>
+				<h2 className="text-xl">Listed items</h2>
 				<ListedItems />
 			</Section>
 			<Section>
-				<h2 className="text-xl py-8 text-center">Favorite items</h2>
+				<h2 className="text-xl">Favorite items</h2>
 				<FavItems />
 			</Section>
 		</>
