@@ -18,7 +18,7 @@ const ItemDetails = ({item, setItem}) => {
     setItem(data);
 	};
 
-    const buttonText = item.favorites?.includes(user.id) ? 'Remove from favorites' : 'Add to favorites';
+    const buttonText = item.favorites?.includes(user?.id) ? 'Remove from favorites' : 'Add to favorites';
 
     return (
         <article className="flex flex-col items-center"> 

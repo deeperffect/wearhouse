@@ -28,8 +28,10 @@ const Items = ({ category }) => {
 		};	
 
 		function filterByCheckboxes() {
-			const filteredItems = items.filter((item) => sexNames.length ? sexNames.includes(item.sex) : true).filter((item) => sizeNames.length ? sizeNames.includes(item.size) : true);
-			setFilteredItems(filteredItems);
+			if(items.length > 0) {
+				const filteredItems = items.filter((item) => sexNames.length ? sexNames.includes(item.sex) : true).filter((item) => sizeNames.length ? sizeNames.includes(item.size) : true);
+				setFilteredItems(filteredItems);
+			}
 		};
 
 		filterByCategory(category);
