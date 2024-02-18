@@ -22,11 +22,13 @@ const BlogDetailsPage = ({ params }) => {
 	}, []);
   
 	return (
-		<Section>
-			<Suspense fallback={<Loader />}>
-				<BlogDetails blog={blog} setBlog={setBlog}/>
-			</Suspense>
-		</Section>
+		<div className="bg-white/50">
+			<Section>
+				<Suspense fallback={<Loader />}>
+					<BlogDetails blog={blog} setBlog={setBlog}/>
+				</Suspense>
+			</Section>
+		</div>
 	)
 };
 

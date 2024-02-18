@@ -4,7 +4,7 @@
   --active-width: calc(100% - ((var(--max-items) - 1) * var(--inactive-width)));
   --gutter: 1rem;
   display: flex;
-  margin: 1rem calc(var(--gutter) * -1);
+  margin: 0 calc(var(--gutter) * -1);
 }
 
 .cards-drawer .card-drawer-item {

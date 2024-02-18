@@ -30,11 +30,11 @@ const Header = () => {
 	};
 
 	return (
-		<header ref={headerRef} className='bg-gray-200 text-black py-2 fixed top-0 left-0 right-0 z-50'>
+		<header ref={headerRef} className=' bg-slate-200 text-black fixed top-0 left-0 right-0 z-50'>
 			<Container>
 				<div className='flex items-center justify-between'>
 					<Logo />
-					<div className={`overflow-y-auto header-menu ${isActive ? 'translate-x-0' : 'translate-x-full'} duration-300 transition-transform fixed bg-white bottom-0 top-headerHeight z-50 left-0 w-full py-8 px-2 flex flex-col justify-between gap-4 lg:gap-0 lg:contents lg:static`}>
+					<div className={`overflow-y-auto header-menu ${isActive ? 'translate-x-60' : 'translate-x-full'} duration-300 transition-transform fixed bg-white bottom-0 top-headerHeight z-50 left-0 w-full py-8 px-2 flex flex-col justify-between gap-4 lg:gap-0 lg:contents lg:static`}>
 						<Navbar />
 						<div className='flex lg:gap-4 gap-2 flex-col items-start text-lg lg:flex-row lg:items-center'>
 							{
@@ -42,6 +42,9 @@ const Header = () => {
 									<>
 										<Link href="/collection/create-item">
 											<Image src="/assets/icons/plus.svg" alt="plus icon" width={32} height={32}/>
+										</Link>
+										<Link href="/cart">
+											<Image src="/assets/icons/shopping-bag.svg" alt="shopping bag icon" width={29} height={22}/>
 										</Link>
 										<Link href="/profile">
 											<Image src="/assets/icons/profile.svg" alt="profile icon" width={32} height={32}/>

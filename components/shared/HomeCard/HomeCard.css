@@ -53,6 +53,7 @@
   aspect-ratio: 1;
   background-color: #223;
   border-radius: 50%;
+  color: white;
 }
 
 .card-home .card-content {
@@ -61,6 +62,7 @@
   position: absolute;
   opacity: 0;
   transition: opacity 0.3s;
+  color: white;
 }
 
 .card-drawer-item.active .card-content {

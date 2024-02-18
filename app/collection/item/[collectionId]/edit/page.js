@@ -93,61 +93,67 @@ const EditItem = ({params}) => {
 	};
   
 	return (
-		<Section>
-			<header>
-				<h2 className="text-3xl p-4 text-center font-bold">Edit listing</h2>
-			</header>
-			<form className="text-black max-w-[30rem] mx-auto p-4">
-				<div className="pb-4">
-					<input className="rounded-md max-w-full w-full p-2 leading-none" type="text" placeholder={item.title}
-					value={title} onChange={(e) => setTitle(e.target.value)} />  
-				</div>
-				<div className="pb-4">
-					<input className="rounded-md max-w-full w-full p-2 leading-none" type="text" placeholder={item.description}
-					value={description} onChange={(e) => setDescription(e.target.value)}/>
-				</div>
-				<div className="pb-4">
-					<input className="rounded-md max-w-full w-full p-2 leading-none" type="number" placeholder={item.price}
-					value={price} onChange={(e) => setPrice(e.target.value)}/>
-				</div>
-				<div className="pb-4">
-					<input className="rounded-md max-w-full w-full p-2 leading-none" type="text" placeholder={item.image}
-					value={image} onChange={(e) => setImage(e.target.value)}/>
-				</div>
-				<div className="pb-4">
-					<Select
-						value={category}
-						onChange={(e) => {
-						setCategory(e.target.value)
+		<div className="bg-white/50 h-pageHeight">
+			<Section>
+				<header>
+					<h2 className="text-3xl p-4 text-center font-bold">Edit listing</h2>
+				</header>
+				<form className="text-black max-w-[30rem] mx-auto p-4 bg-slate-200/50 rounded-xl">
+					<div className="pb-4">
+						<input className="rounded-md max-w-full w-full p-2 leading-none" type="text" placeholder={item.title}
+						value={title} onChange={(e) => setTitle(e.target.value)} />  
+					</div>
+					<div className="pb-4">
+						<textarea className="rounded-md max-w-full w-full p-2 leading-none" rows="16" cols="50" placeholder={item.description}
+						value={description} onChange={(e) => setDescription(e.target.value)}/>
+					</div>
+					<div className="pb-4">
+						<input className="rounded-md max-w-full w-full p-2 leading-none" type="number" placeholder={item.price}
+						value={price} onChange={(e) => setPrice(e.target.value)}/>
+					</div>
+					<div className="pb-4">
+						<input className="rounded-md max-w-full w-full p-2 leading-none" type="text" placeholder={item.image}
+						value={image} onChange={(e) => setImage(e.target.value)}/>
+					</div>
+					<div className="pb-4">
+						<h3>Select category:</h3>
+						<Select
+							value={category}
+							onChange={(e) => {
+								setCategory(e.target.value)
+							}}
+							id='category'
+							options={CATEGORIES}
+						/>
+					</div>
+					<div className="pb-4">
+						<h3>Select sex:</h3>
+						<Select
+							value={sex}
+							onChange={(e) => {
+							setSex(e.target.value)
 						}}
-						id='category'
-						options={CATEGORIES}
-					/>
-				</div>
-				<div className="pb-4">
-					<Select
-						value={sex}
-						onChange={(e) => {
-						setSex(e.target.value)
-						}}
-						id='sex'
-						options={SEXES}
-					/>
-				</div>
-				<div className="pb-4">
-					<Select
-						value={size}
-						onChange={(e) => {
-						setSize(e.target.value)
-						}}
-						id='size'
-						options={SIZES}
-					/>
-				</div>
-				<button className="bg-gray-100 text-black w-full p-2 rounded-xl mb-4" onClick={handleEdit}>Edit</button>
-				<button className="bg-red-400 text-black w-full p-2 rounded-xl" onClick={handleDelete}>Delete</button>
-			</form>
-		</Section>
+							id='sex'
+							options={SEXES}
+							/>
+					</div>
+					<div className="pb-4">
+						<h3>Select size:</h3>
+						<Select
+							className="uppercase"
+							value={size}
+							onChange={(e) => {
+								setSize(e.target.value)
+							}}
+							id='size'
+							options={SIZES}
+							/>
+					</div>
+					<button className="bg-darkOrange hover:bg-lightOrange text-black w-full p-2 mb-4" onClick={handleEdit}>Edit</button>
+					<button className="bg-red-400 text-black w-full p-2" onClick={handleDelete}>Delete</button>
+				</form>
+			</Section>
+		</div>
 	)
 };
 

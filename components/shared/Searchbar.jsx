@@ -8,16 +8,19 @@ import ItemCard from "./Item/ItemCard";
 const Searchbar = () => {
 	const [search, setSearch] = useState('');
 	const [result, setResult] = useState(null);
-	async function handleSearch() {
+	const [visibility, setVisibility] = useState('hidden');
 
+	async function handleSearch() {
 		if(!search) {
-			console.log('Search field empty')
-			return
+			console.log('Search field empty');
+			setVisibility('hidden');
+			return;
 		};
 	try {
 		const response = await fetch(`/api/search/${search}`, {method: "GET"});
 		const searchResult = await response.json();
 		setResult(searchResult);
+		setVisibility('');
 	} catch (error) {
 		console.log(error);
 	}
@@ -34,14 +37,16 @@ const Searchbar = () => {
 					<button onClick={handleSearch} className="bg-white p-1.5 w-16 rounded-xl">Go</button>
 				</div>
 			</Container>
-			<div className="grid grid-cols-2 lg:grid-cols-3">
-				{
-					result?.length > 0 && result.map((card) => {
-						return (
-							<ItemCard card={card} key={card._id}/>)
-						})
-				}
-			</div>
+			<Section>
+				<div className={`${visibility} grid grid-cols-2 lg:grid-cols-3 gap-x-6 bg-slate-400/50 rounded-md pt-6 px-2 mb-6`}>
+					{	
+						result?.length > 0 && result.map((card) => {
+							return (
+								<ItemCard card={card} key={card._id}/>)
+							})
+					}
+				</div>
+			</Section>
 		</>
 	)
 };

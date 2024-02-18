@@ -67,61 +67,67 @@ const CreateItem = () => {
   
 
 	return (
-		<Section>
-			<header>
-				<h2 className="text-3xl p-4 text-center font-bold">Create listing</h2>
-				<h2 className="text-base p-4 text-center">Please fill out the information about the item:</h2>
-			</header>
-			<form className="text-black max-w-[30rem] mx-auto p-4">
-				<div className="pb-4">
-					<input className="rounded-md max-w-full w-full p-2 leading-none" type="text" placeholder="Title.."
-					value={title} onChange={(e) => setTitle(e.target.value)} />  
-				</div>
-				<div className="pb-4">
-					<textarea rows="4" className="rounded-md max-w-full w-full p-2 leading-none" type="text" placeholder="Description.."
-					value={description} onChange={(e) => setDescription(e.target.value)}/>
-				</div>
-				<div className="pb-4">
-					<input className="rounded-md max-w-full w-full p-2 leading-none" type="number" placeholder="Price.."
-					value={price} onChange={(e) => setPrice(e.target.value)}/>
-				</div>
-				<div className="pb-4">
-					<input className="rounded-md max-w-full w-full p-2 leading-none" type="text" placeholder="Image.."
-					value={image} onChange={(e) => setImage(e.target.value)}/>
-				</div>
-				<div className="pb-4">
-					<Select
-						value={category}
-						onChange={(e) => {
-						setCategory(e.target.value)
-						}}
-						id='category'
-						options={CATEGORIES}
-					/>
-				</div>
-				<div className="pb-4">
-					<Select
-						value={sex}
-						onChange={(e) => {
-						setSex(e.target.value)
-						}}
-						id='sex'
-						options={SEXES}
-					/>
-				</div>
-				<div className="pb-4">
-					<Select
-						value={size}
-						onChange={(e) => {
-						setSize(e.target.value)
-						}}
-						id='size'
-						options={SIZES}
-					/>
-				</div>
-				<button className="bg-gray-100 text-black w-full p-2" onClick={handleCreate}>Create</button>
-			</form>
-		</Section>
+		<div className="bg-white/50">
+			<Section>
+				<header>
+					<h2 className="text-3xl p-4 text-center font-bold">Create listing</h2>
+					<h2 className="text-base pb-4 text-center">Please fill out the information about the item:</h2>
+				</header>
+				<form className="text-black max-w-[30rem] mx-auto p-4 bg-slate-200/50">
+					<div className="pb-4">
+						<input className="rounded-md max-w-full w-full p-2 leading-none" type="text" placeholder="Title.."
+						value={title} onChange={(e) => setTitle(e.target.value)} />  
+					</div>
+					<div className="pb-4">
+						<textarea rows="16" cols="50" className="rounded-md max-w-full w-full p-2 leading-none" type="text" placeholder="Description.."
+						value={description} onChange={(e) => setDescription(e.target.value)}/>
+					</div>
+					<div className="pb-4">
+						<input className="rounded-md max-w-full w-full p-2 leading-none" type="number" placeholder="Price.."
+						value={price} onChange={(e) => setPrice(e.target.value)}/>
+					</div>
+					<div className="pb-4">
+						<input className="rounded-md max-w-full w-full p-2 leading-none" type="text" placeholder="Image.."
+						value={image} onChange={(e) => setImage(e.target.value)}/>
+					</div>					
+					<div className="pb-4">
+						<h3>Select category:</h3>
+						<Select
+							value={category}
+							onChange={(e) => {
+							setCategory(e.target.value)
+							}}
+							id='category'
+							options={CATEGORIES}
+						/>
+					</div>
+					<div className="pb-4">
+					<h3>Select sex:</h3>
+						<Select
+							value={sex}
+							onChange={(e) => {
+								setSex(e.target.value)
+							}}
+							id='sex'
+							options={SEXES}
+							/>
+					</div>
+					<div className="pb-4">
+					<h3>Select size:</h3>
+						<Select
+							className="uppercase"
+							value={size}
+							onChange={(e) => {
+								setSize(e.target.value)
+							}}
+							id='size'
+							options={SIZES}
+							/>
+					</div>
+					<button className="bg-darkOrange hover:bg-lightOrange text-black w-full p-2" onClick={handleCreate}>Create</button>
+				</form>
+			</Section>			
+		</div>
 	)
 };
 

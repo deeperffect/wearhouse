@@ -22,7 +22,7 @@ const BlogCard = ({ card }) => {
 						alt="heart icon"
 						width={32}
 						height={32} />
-						<p className="absolute bottom-0 right-0 py-2 px-9 max-w-full">{card.likes.length}</p>
+						<p className="text-white absolute bottom-0 right-0 py-2 px-9 max-w-full">{card.likes.length}</p>
 					</>
 				}
 			</figure>

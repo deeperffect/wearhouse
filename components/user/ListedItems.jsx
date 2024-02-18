@@ -23,7 +23,7 @@ const ListedItems = () => {
 
 
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-2">
+		<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 			{
 				userItems && userItems.length > 0 ? (userItems.map((card, index) => {
 					return (

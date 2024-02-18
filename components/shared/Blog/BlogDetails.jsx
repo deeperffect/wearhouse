@@ -18,30 +18,30 @@ const BlogDetails = ({blog, setBlog}) => {
 	}
 
 	return (
-		<article>
+		<article className="flex flex-col items-center mx-auto max-w-[75rem] py-8 rounded-xl bg-slate-200/50">
 			<header>
-				<h2 className="font-bold text-3xl text-center p-4">{blog.title}</h2>
+				<h2 className="p-2 font-bold text-3xl">{blog.title}</h2>
 			</header>
-			<figure>
-				<img src={blog.image} alt={blog.title} />
-			</figure>
-			<div>
-				<p className="text-center p-4">{blog.description}</p>
+			<div className="flex mx-auto flex-col items-center p-4">
+				<figure>
+					<img src={blog.image} alt={blog.title} />
+				</figure>		
+				<p className="bg-slate-400/50 p-4 rounded-xl my-4">{blog.description}</p>
 					{
 						user && user.id === blog.owner && 
-							<div className="flex flex-col items-center gap-4">
-								<Link href={`/blog/${blog._id}/edit`} className="bg-white w-full text-black p-4 rounded-xl text-center max-w-[35rem]">Edit</Link>
+						<div className="bg-darkOrange hover:bg-lightOrange text-black p-2 my-2 w-full text-center max-w-[30rem]">
+								<Link href={`/blog/${blog._id}/edit`}>Edit</Link>
 							</div>
 					}     
 					{
 						user && !blog.likes?.includes(user.id) && user.id !==blog.owner &&
-							<div className="flex flex-col items-center gap-4">
-								<button onClick={handleLike} className="bg-white w-full text-black p-4 rounded-xl text-center max-w-[35rem]">Like</button>
+							<div className="bg-darkOrange hover:bg-lightOrange text-black p-2 my-2 w-full text-center max-w-[30rem]">
+								<button onClick={handleLike}>Like</button>
 							</div>
 					}
 					{
 						user && blog.likes?.includes(user.id) &&
-							<div className="text-center">
+						<div className="text-center">
 								<p>Thank you for liking the post!</p>
 							</div>
 					}
