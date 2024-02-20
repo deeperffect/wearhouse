@@ -14,19 +14,31 @@ const Register = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
+	const [errorMessage, setErrorMessage] = useState('');
 
   
 	async function handleRegister(e) {
 		e.preventDefault();
-		if (password !== confirmPassword || password < 8) {
-			console.log("invalid password");
-			return;
+		let errorMessages = '';
+		if (name.length < 3) {
+			errorMessages += 'Invalid name length. Minimum 3. \n';
+		};  
+		if (email.length < 8) {
+			errorMessages += 'Invalid email. Minimum 8. \n';
 		};
 
-		if(!isEmail(email)) {
-			console.log('invalid email');
-			return;
+		if (password.length < 8) {
+			errorMessages += 'Invalid password length. Minimum 8. \n';
 		};
+
+		if (password !== confirmPassword) {
+			errorMessages += 'Passwords not matching. \n';
+		};
+
+		if (errorMessages) {
+			setErrorMessage(errorMessages);
+			return;
+		}
 
 	const userData = {
 		name: name,
@@ -57,16 +69,23 @@ const Register = () => {
 					<h2 className="text-xl pb-4 text-center font-bold">Register</h2>
 					<h2 className="text-base pb-4 text-center">Please fill the information below:</h2>
 					<form className="text-l text-black">
+						{errorMessage && (
+							<div className="text-red-500 mb-4">{errorMessage}</div>
+						)}
 						<div className='pb-4'>
+							<h3 className="pb-1 font-bold">Full name:</h3>
 							<input className="rounded-md max-w-full w-full p-2 leading-none" type="text" id="Full Name" placeholder="Full Name" onChange={(e) => setName(e.target.value)} value={name}/>        
 						</div>
 						<div className='pb-4'>
+							<h3 className="pb-1 font-bold">Email:</h3>
 							<input className="rounded-md max-w-full w-full p-2 leading-none" type="email" id="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email}/>
 						</div>
 						<div className='pb-4'>
+							<h3 className="pb-1 font-bold">Password:</h3>
 							<input className="rounded-md max-w-full w-full p-2 leading-none" type="password" id="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password}/>
 						</div>
 						<div className='pb-4'>
+							<h3 className="pb-1 font-bold">Confirm password:</h3>
 							<input className="rounded-md max-w-full w-full p-2 leading-none" type="password" id="confirmPassword" placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword}/>   
 						</div>
 						<button onClick={handleRegister} className="bg-darkOrange hover:bg-lightOrange text-black w-full p-2">Create my account</button>

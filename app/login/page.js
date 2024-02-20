@@ -1,6 +1,5 @@
 'use client'
 import { AuthContext } from "@app/contexts/AuthContext";
-import Container from "@components/Container";
 import Section from "@components/Section";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -13,9 +12,11 @@ const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const { setUser } = useContext(AuthContext);
-  
+	const [errorMessage, setErrorMessage] = useState('');
+
 	async function handleLogin(e) {
 		e.preventDefault();
+
 		const userData = {
 			email: email,
 			password: password
@@ -35,9 +36,11 @@ const Login = () => {
 	} else {
 		const errorResponse = await response.json();
 		console.error('Login failed:', errorResponse.error);
+		setErrorMessage('Invalid email or password.');
 	};
 	} catch (error) {
 		console.error('Login failed:', error);
+		setErrorMessage('Invalid email or password.');
 	};
 };
 
@@ -48,6 +51,9 @@ const Login = () => {
           <h2 className="text-xl pb-4 text-center font-bold">Login</h2>
           <h3 className="text-base pb-4 text-center">Please enter your email and password:</h3>
           <form className="text-l text-black">
+			{errorMessage && (
+							<div className="text-red-500 mb-4">{errorMessage}</div>
+						)}
             <div className="pb-4">
                 <input className="rounded-md max-w-full w-full p-2 leading-none" type="email" id="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value ={email}/>
             </div>

@@ -1,5 +1,4 @@
 'use client'
-import { ShoppingBagProvider } from "@app/contexts/ShoppingBagContext";
 import Section from "@components/Section";
 import ItemDetails from "@components/shared/Item/ItemDetails";
 import Loader from "@components/shared/Loader";
@@ -18,12 +17,10 @@ const collectionId = ({ params }) => {
 		}, []);
 
 	return (
-		<div className="bg-white/50">
+		<div className="bg-white/50 h-pageHeight">
 			<Section>
 				<Suspense fallback={<Loader />}>
-					<ShoppingBagProvider>
-						<ItemDetails item={item} setItem={setItem}/>
-					</ShoppingBagProvider>
+					<ItemDetails item={item} setItem={setItem}/>
 				</Suspense>
 			</Section>
 		</div>

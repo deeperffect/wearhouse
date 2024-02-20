@@ -1,12 +1,15 @@
 import { AuthContext } from "@app/contexts/AuthContext";
-import { ShoppingBagContext } from "@app/contexts/ShoppingBagContext";
-import Section from "@components/Section";
+import { BasketContext } from "@app/contexts/BasketContext";
 import Link from "next/link";
 import { useContext } from "react";
 
 const ItemDetails = ({item, setItem}) => {
     const { user } = useContext(AuthContext);
-    const { addToCart } = useContext(ShoppingBagContext);
+    const { addToBasket } = useContext(BasketContext);
+
+    async function handleBuy() {
+        addToBasket(item);
+    }
 
 	async function handleFav() {
 		const response = await fetch(`/api/collection/item/${item._id}/fav-add`, {
@@ -17,13 +20,9 @@ const ItemDetails = ({item, setItem}) => {
 		})
 	});
     const data = await response.json();
-    console.log(data);
     setItem(data);
 	};
-
-    function addToShoppingBag() {
-        addToCart(item);
-    }
+    
 
     const buttonText = item.favorites?.includes(user?.id) ? 'Remove from favorites' : 'Add to favorites';
 
@@ -43,7 +42,7 @@ const ItemDetails = ({item, setItem}) => {
             </div>
             {
                 user && user.id === item.owner &&
-                <div className="bg-green-400 text-black p-2 w-full text-center max-w-[30rem]">
+                <div className="bg-darkOrange hover:bg-lightOrange text-black p-2 w-full text-center max-w-[30rem]">
                         <Link href={`/collection/item/${item._id}/edit`}>Edit</Link>
                     </div>
             }
@@ -57,7 +56,7 @@ const ItemDetails = ({item, setItem}) => {
                 user && user.id !== item.owner &&
                 <>
                         <div className="bg-darkOrange hover:bg-lightOrange text-black p-2 my-2 w-full text-center max-w-[30rem]">
-                            <button onClick={addToShoppingBag}>Add to Shopping Bag</button>
+                            <button onClick={handleBuy}>Add to Shopping Bag</button>
                         </div>     
                         <div className="bg-lightBlue hover:bg-indigo-300 text-black p-2  w-full text-center max-w-[30rem]">
                             <button onClick={handleFav}>{buttonText}</button>
