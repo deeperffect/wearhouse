@@ -17,7 +17,7 @@ const collectionId = ({ params }) => {
 		}, []);
 
 	return (
-		<div className="bg-white/50 h-pageHeight">
+		<div className="bg-white/50 h-full">
 			<Section>
 				<Suspense fallback={<Loader />}>
 					<ItemDetails item={item} setItem={setItem}/>

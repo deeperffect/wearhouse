@@ -3,28 +3,35 @@ import React, { useContext } from 'react';
 import ItemCard from './Item/ItemCard';
 import Image from 'next/image';
 
-const BasketContent = () => {	
-	const { removeFromBasket } = useContext(BasketContext);
-	const basketItems = JSON.parse(localStorage.getItem('items'));
+const BasketContent = ({toggleBasket}) => {	
+	const { incrementItemCount, decrementItemCount, basketItems } = useContext(BasketContext);
 
     return (
-		<div className='bg-slate-200/50 flex flex-col'>
-			<header className='flex'>
+		<div className=' flex flex-col'>
+			<header className='flex justify-between border-b-2 mb-6 border-slate-600'>
 				<h2 className='text-3xl'>Basket</h2>
-				<Image src="/assets/icons/x.svg" alt='x button' width={16} height={32} />
+				<button onClick={toggleBasket}>
+					<Image src="/assets/icons/x.svg" alt='x button' width={16} height={32} />
+				</button>
 			</header>
 			{
 				basketItems && basketItems.length > 0 ?
 				(<ul className='flex flex-col max-w-[10rem]'>
 					{
 						basketItems.map((item, index) => {
-							return <li>
-										<ItemCard card={item} key={index} />
-										<button onClick={() => removeFromBasket(item.id)}>Remove</button>
+							console.log(item);
+							const itemToDisplay = item.item;
+							return <li key={`${itemToDisplay._id}${index}`}>
+										<ItemCard card={itemToDisplay} />
+										<div className='flex'>
+											<button className="text-xl" onClick={() => decrementItemCount(itemToDisplay)}>-</button>
+											<span className='bg-slate-500 px-4 text-white rounded-md m-4'>{item.count}</span>
+											<button className="text-xl" onClick={() => incrementItemCount(itemToDisplay)}>+</button>
+										</div>
 									</li>
 						})}
 				</ul>) : (
-					<div>
+					<div className='flex justify-center'>
 						<h3 className='text-xl'>Basket is empty.</h3>
 					</div>
 

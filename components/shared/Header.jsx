@@ -50,7 +50,7 @@ const Header = () => {
                 <div className='flex items-center justify-between'>
                     <Logo />
                     {/* MOBILE MENU */}
-                    <div className={`overflow-y-auto header-menu ${isActive ? 'translate-x-60' : 'translate-x-full'} duration-300 transition-transform fixed bg-white bottom-0 top-headerHeight z-50 left-0 w-full flex flex-col items-start p-8 gap-8 lg:hidden`}>
+                    <div className={`overflow-y-auto header-menu ${isActive ? 'translate-x-0' : 'translate-x-full'} duration-300 transition-transform fixed bg-white bottom-0 top-headerHeight z-50 left-0 w-full flex flex-col items-start p-8 gap-8 lg:hidden`}>
                         {user ? (
                             <>
                                 <div className='lg:hidden items-center gap-1'>
@@ -112,8 +112,10 @@ const Header = () => {
                     <HamburgerButton handleClick={toggleHeader} isActive={isActive} />
                 </div>
             </Container>
-            <div className={`overflow-y-auto basket-menu ${basketActive ? 'translate-x-[60rem]' : 'translate-x-full'} duration-300 transition-transform fixed bg-white bottom-0 top-headerHeight z-50 left-0 w-full py-8 px-2 flex flex-col justify-between gap-4 lg:gap-0`}>
-                <BasketContent />
+            <div className={`overflow-y-auto basket-menu ${basketActive ? 'translate-x-0' : 'translate-x-full'}
+            duration-300 transition-transform fixed bg-white bottom-0 w-full
+            top-headerHeight z-50 left-0 py-8 px-2 flex flex-col justify-between gap-4 lg:gap-0`}>
+                <BasketContent toggleBasket={toggleBasket}/>
             </div>
         </header>
     );
