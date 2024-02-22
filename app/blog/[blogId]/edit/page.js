@@ -1,6 +1,7 @@
 'use client'
 import { AuthContext } from "@app/contexts/AuthContext";
 import Section from "@components/Section";
+import BackArrow from "@components/shared/BackArrow";
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useContext } from "react";
 
@@ -92,6 +93,7 @@ const EditBlog = ({params}) => {
 	return (
 		<div className="bg-white/50 h-pageHeight">
 			<Section>
+				<BackArrow />
 				<header>
 					<h2 className="text-3xl p-4 text-center font-bold">Edit post</h2>
 					<h3 className="text-center pb-4">Please fill out the form below:</h3>
@@ -112,7 +114,7 @@ const EditBlog = ({params}) => {
 						<h3 className="pb-1 font-bold">Image URL:</h3>
 						<input className="rounded-md max-w-full w-full p-2 leading-none" type="text" placeholder="Image.." value={image} onChange={(e) => setImage(e.target.value)} />
 					</div>
-					<button className="bg-darkOrange hover:bg-lightOrange text-black w-full p-2 mb-4" onClick={handleEdit}>Edit</button>
+					<button className="bg-darkOrange hover:bg-lightOrange text-white w-full p-2 mb-4" onClick={handleEdit}>Edit</button>
 					<button className="bg-red-400 text-black w-full p-2" onClick={handleDeleteConfirmation}>Delete</button>
 				</form>
 				{showDeleteConfirmation && (

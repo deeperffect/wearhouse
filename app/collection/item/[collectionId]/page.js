@@ -1,8 +1,8 @@
 'use client'
 import Section from "@components/Section";
+import BackArrow from "@components/shared/BackArrow";
 import ItemDetails from "@components/shared/Item/ItemDetails";
-import Loader from "@components/shared/Loader";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const collectionId = ({ params }) => {
 	const [item, setItem] = useState({});
@@ -19,9 +19,8 @@ const collectionId = ({ params }) => {
 	return (
 		<div className="bg-white/50 h-full">
 			<Section>
-				<Suspense fallback={<Loader />}>
-					<ItemDetails item={item} setItem={setItem}/>
-				</Suspense>
+				<BackArrow />						
+				<ItemDetails item={item} setItem={setItem}/>
 			</Section>
 		</div>
 	)

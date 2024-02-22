@@ -1,5 +1,6 @@
 'use client'
 import Section from "@components/Section";
+import BackArrow from "@components/shared/BackArrow";
 import BlogDetails from "@components/shared/Blog/BlogDetails";
 import Loader from "@components/shared/Loader";
 import { Suspense, useEffect, useState } from "react";
@@ -24,6 +25,7 @@ const BlogDetailsPage = ({ params }) => {
 	return (
 		<div className="bg-white/50">
 			<Section>
+				<BackArrow />
 				<Suspense fallback={<Loader />}>
 					<BlogDetails blog={blog} setBlog={setBlog}/>
 				</Suspense>

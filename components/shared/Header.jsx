@@ -53,14 +53,14 @@ const Header = () => {
                     <div className={`overflow-y-auto header-menu ${isActive ? 'translate-x-0' : 'translate-x-full'} duration-300 transition-transform fixed bg-white bottom-0 top-headerHeight z-50 left-0 w-full flex flex-col items-start p-8 gap-8 lg:hidden`}>
                         {user ? (
                             <>
-                                <div className='lg:hidden items-center gap-1'>
+                                <div className='lg:hidden items-center gap-4 flex justify-between'>
                                     <Link href="/profile">
                                         <Image src="/assets/icons/profile.svg" alt="profile icon" width={32} height={32}/>
                                     </Link>
                                     <p>{user.email}</p>
+                                    <Btn clickHandler={logoutUser}>Logout</Btn>
                                 </div>
                                 <Navbar />
-                                <Btn clickHandler={logoutUser}>Logout</Btn>
                             </>
                         ) : (
                             <>

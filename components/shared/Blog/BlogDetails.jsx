@@ -29,13 +29,13 @@ const BlogDetails = ({blog, setBlog}) => {
 				<p className="bg-slate-400/50 p-4 rounded-xl my-4">{blog.description}</p>
 					{
 						user && user.id === blog.owner && 
-						<div className="bg-darkOrange hover:bg-lightOrange text-black p-2 my-2 w-full text-center max-w-[30rem]">
+						<div className="bg-darkOrange hover:bg-lightOrange text-white p-2 my-2 w-full text-center max-w-[30rem]">
 								<Link href={`/blog/${blog._id}/edit`}>Edit</Link>
 							</div>
 					}     
 					{
 						user && !blog.likes?.includes(user.id) && user.id !==blog.owner &&
-							<div className="bg-darkOrange hover:bg-lightOrange text-black p-2 my-2 w-full text-center max-w-[30rem]">
+							<div className="bg-darkOrange hover:bg-lightOrange text-white p-2 my-2 w-full text-center max-w-[30rem]">
 								<button onClick={handleLike}>Like</button>
 							</div>
 					}

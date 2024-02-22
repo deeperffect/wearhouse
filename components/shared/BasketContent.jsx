@@ -16,21 +16,28 @@ const BasketContent = ({toggleBasket}) => {
 			</header>
 			{
 				basketItems && basketItems.length > 0 ?
-				(<ul className='flex flex-col max-w-[10rem]'>
-					{
-						basketItems.map((item, index) => {
-							console.log(item);
-							const itemToDisplay = item.item;
-							return <li key={`${itemToDisplay._id}${index}`}>
-										<ItemCard card={itemToDisplay} />
-										<div className='flex'>
-											<button className="text-xl" onClick={() => decrementItemCount(itemToDisplay)}>-</button>
-											<span className='bg-slate-500 px-4 text-white rounded-md m-4'>{item.count}</span>
-											<button className="text-xl" onClick={() => incrementItemCount(itemToDisplay)}>+</button>
-										</div>
-									</li>
-						})}
-				</ul>) : (
+				(<div className='flex justify-between'>
+					<ul className='flex flex-col max-w-[10rem]'>
+						{
+							basketItems.map((item, index) => {
+								console.log(item);
+								const itemToDisplay = item.item;
+								return <li key={`${itemToDisplay._id}${index}`}>									
+											<ItemCard card={itemToDisplay} />
+											<div className='flex'>
+												<button className="text-xl" onClick={() => decrementItemCount(itemToDisplay)}>-</button>
+												<span className='bg-slate-500 px-4 text-white rounded-md m-4'>{item.count}</span>
+												<button className="text-xl" onClick={() => incrementItemCount(itemToDisplay)}>+</button>
+											</div>											
+										</li>
+							})
+						}
+					</ul>
+					<div className='flex flex-col px-8 gap-4'>
+						<p>Total Price:</p>
+						<button className='text-white bg-darkOrange hover:bg-lightOrange w-full p-2 mb-4 rounded-md'>Checkout</button>
+					</div>
+				</div>) : (
 					<div className='flex justify-center'>
 						<h3 className='text-xl'>Basket is empty.</h3>
 					</div>

@@ -6,6 +6,7 @@ import { useContext, useState } from 'react';
 import isAuth from "@app/utils/isAuth";
 import { CATEGORIES, SIZES, SEXES } from "@constants/selectOptions";
 import Select from "@components/shared/Select";
+import BackArrow from "@components/shared/BackArrow";
 
 const CreateItem = () => {
 	const [title, setTitle] = useState('');
@@ -72,6 +73,7 @@ const CreateItem = () => {
 	return (
 		<div className="bg-white/50">
 			<Section>
+				<BackArrow />
 				<header>
 					<h2 className="text-3xl p-4 text-center font-bold">Create listing</h2>
 					<h2 className="text-base pb-4 text-center">Please fill out the information about the item:</h2>

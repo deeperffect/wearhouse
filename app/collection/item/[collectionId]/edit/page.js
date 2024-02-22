@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from 'react';
 import isAuth from "@app/utils/isAuth";
 import { CATEGORIES, SIZES, SEXES } from "@constants/selectOptions";
 import Select from "@components/shared/Select";
+import BackArrow from "@components/shared/BackArrow";
 
 const EditItem = ({params}) => {
 	const [item, setItem] = useState({});
@@ -17,6 +18,7 @@ const EditItem = ({params}) => {
 	const [image, setImage] = useState('');
 	const [category, setCategory] = useState();
 	const [errorMessage, setErrorMessage] = useState('');
+	const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 	const { user } = useContext(AuthContext);
 	const router = useRouter();
 
@@ -83,7 +85,17 @@ const EditItem = ({params}) => {
 		};
 	};
 
-	async function handleDelete(e) {
+	function handleDeleteConfirmation(e) {
+		e.preventDefault();
+        setShowDeleteConfirmation(true);
+    };
+
+    function handleDeleteCancel(e) {
+		e.preventDefault();
+        setShowDeleteConfirmation(false);
+    };
+
+	async function handleDeleteConfirm(e) {
 		e.preventDefault()
 		const response = await fetch(`/api/collection/item/${params.collectionId}/delete`, {
 			method: 'DELETE'
@@ -93,11 +105,12 @@ const EditItem = ({params}) => {
 			console.log('item deleted');
 			router.push('/collection/all');
 		}
-	};
+    };
   
 	return (
 		<div className="bg-white/50">
 			<Section>
+				<BackArrow />
 				<header>
 					<h2 className="text-3xl p-4 text-center font-bold">Edit listing</h2>
 				</header>
@@ -159,9 +172,20 @@ const EditItem = ({params}) => {
 							options={SIZES}
 							/>
 					</div>
-					<button className="bg-darkOrange hover:bg-lightOrange text-black w-full p-2 mb-4" onClick={handleEdit}>Edit</button>
-					<button className="bg-red-400 text-black w-full p-2" onClick={handleDelete}>Delete</button>
+					<button className="bg-darkOrange hover:bg-lightOrange text-white w-full p-2 mb-4" onClick={handleEdit}>Edit</button>
+					<button className="bg-red-400 text-white w-full p-2" onClick={handleDeleteConfirmation}>Delete</button>
 				</form>
+				{showDeleteConfirmation && (
+					<div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center">
+						<div className="bg-white p-4 rounded-lg max-w-[15rem]">
+							<p className="text-lg mb-4">Are you sure you want to delete this post?</p>
+							<div className="flex justify-between">
+								<button className="bg-red-500 text-white px-4 py-2 rounded-md mr-2" onClick={handleDeleteConfirm}>Yes</button>
+								<button className="bg-gray-200 px-4 py-2 rounded-md" onClick={handleDeleteCancel}>No</button>
+							</div>
+						</div>
+					</div>
+				)}
 			</Section>
 		</div>
 	)
