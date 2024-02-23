@@ -4,7 +4,7 @@ const CheckboxesList = ({ listChecks, handleChange, title="" }) => {
     return (
           <div className="gap-4">
             {
-                !!title.length && <h3 className="pb-2 border-b-2 border-current">{title}</h3>
+                !!title.length && <h3 className="pb-2 border-b-2 border-current font-bold">{title}</h3>
             }
             <div className="pt-2">
                 {

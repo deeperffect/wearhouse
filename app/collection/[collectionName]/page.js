@@ -13,21 +13,23 @@ const Collection = () => {
 
 	return (
 		<>
-			<CheckboxesProvider>
-				<div className="flex bg-white/50">
-					<aside className="sticky top-headerHeight h-pageHeight overflow-auto">
-						<Sidebar />
-					</aside>
-					<div className="bg-slate-200/50 rounded-md mx-auto">
-							<Searchbar />
-						<Section>
-							<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-								<Items category={category}/>
-							</div>
-						</Section>
+			<Section>
+				<CheckboxesProvider>
+					<div className="flex bg-white/50">
+						<aside>
+							<Sidebar />
+						</aside>
+						<div className="bg-slate-200/50 rounded-md mx-auto">
+								<Searchbar />
+							<Section>
+								<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+									<Items category={category}/>
+								</div>
+							</Section>
+						</div>
 					</div>
-				</div>
-			</CheckboxesProvider>
+				</CheckboxesProvider>
+			</Section>
 		</>
 	)
 };

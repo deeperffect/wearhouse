@@ -48,7 +48,7 @@ const Header = () => {
         <header ref={headerRef} className='bg-slate-900 text-black fixed top-0 left-0 right-0 z-50'>
             <Section>
                 <div className='flex justify-between items-center'>
-                    <div className=' px-[1.5px]'>
+                    <div className="px-[5px]">
                         <Logo/>
                     </div>
                     {/* MOBILE MENU */}
