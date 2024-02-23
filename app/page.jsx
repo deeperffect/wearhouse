@@ -24,7 +24,7 @@ function Home() {
 			<div className="bg-slate-200/50">
 				<Section>
 					<h3 className="text-xl font-bold py-4">Latest items</h3>
-					<div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
+					<div className="grid grid-cols-2 lg:grid-cols-3 gap-8 pb-4">
 						<LatestItems />
 					</div>
 				</Section>
@@ -32,7 +32,7 @@ function Home() {
 			<div className=" bg-white/50">
 				<Section>
 					<h3 className="text-xl font-bold py-4">Latest blogs</h3>
-					<div className="grid grid-cols-2 gap-8 lg:grid-cols-3">
+					<div className="grid grid-cols-2 gap-8 lg:grid-cols-3 pb-4">
 						<LatestBlogs />
 					</div>
 				</Section>

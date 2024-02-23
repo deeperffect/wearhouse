@@ -12,6 +12,7 @@ import HamburgerButton from './HamburgerButton';
 import Logo from './Logo';
 import Navbar from './Navbar';
 import Btn from './Btn';
+import Section from '@components/Section';
 
 const Header = () => {
     const { user, logoutUser } = useContext(AuthContext);
@@ -46,7 +47,7 @@ const Header = () => {
 
     return (
         <header ref={headerRef} className=' bg-slate-900 text-black fixed top-0 left-0 right-0 z-50'>
-            <Container>
+            <Section>
                 <div className='flex justify-between items-center'>
                     <Logo/>
                     {/* MOBILE MENU */}
@@ -115,7 +116,7 @@ const Header = () => {
                     </div>
                     <HamburgerButton handleClick={toggleHeader} isActive={isActive} />
                 </div>
-            </Container>
+            </Section>
             <div className={`overflow-y-auto basket-menu ${basketActive ? 'translate-x-0' : 'translate-x-full'}
             duration-300 transition-transform fixed bg-white bottom-0 w-full
             top-headerHeight z-50 left-0 py-8 px-2 gap-4 lg:gap-0`}>

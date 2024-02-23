@@ -1,17 +1,15 @@
-import Link from 'next/link';
 import React from 'react'
 import Logo from './Logo';
+import Section from '@components/Section';
 
 const Footer = () => {
   return (
-	<footer className='border-5 '>
-		<div className='flex flex-col md:flex-row md:justify-between text-center items-center'>
-			<Link href='/'>
-				<Logo />
-			</Link>
+	<Section>
+		<footer className='flex items-center justify-between p-2'>
+			<Logo />
 			<p>2024 Wearhouse. All rights reserved.</p>
-		</div>
-	</footer>
+		</footer>
+	</Section>
   )
 }
 
