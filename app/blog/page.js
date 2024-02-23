@@ -40,12 +40,12 @@ const Blog = () => {
       </div>
       <div className="bg-slate-200/50 pb-8">
         <Section>            
-            <h2 className="py-8 text-2xl text-center md:text-start">Official posts</h2>
+            <h2 className="py-4 font-bold text-2xl text-center md:text-start">Official posts</h2>
             <Blogs blogs={blogsOfficial} className="gap-4 md:grid grid-cols-3"/> 
         </Section>
       </div>
       <Section>
-          <h2 className="py-8 text-2xl text-center md:text-start">User posts</h2>                 
+          <h2 className="py-4 font-bold text-2xl text-center md:text-start">User posts</h2>                 
           <Blogs blogs={blogsUser} className="gap-4 md:grid grid-cols-3"/>
       </Section>  
     </div>

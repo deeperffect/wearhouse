@@ -26,8 +26,8 @@ const BlogCard = ({ card }) => {
 					</>
 				}
 			</figure>
-			<div className="py-4 px-2">
-				<header className="pb-4">
+			<div className="py-2 px-2">
+				<header>
 					<h3 className="font-[600] text-lg line-clamp-1">{card.title}</h3>
 				</header>
 				<div className="body-content">

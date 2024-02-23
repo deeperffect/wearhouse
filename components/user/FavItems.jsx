@@ -22,7 +22,7 @@ const FavItems = () => {
 
 
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+		<div className="grid grid-cols-1 md:grid-cols-4 gap-6">
 			{
 				favItems && favItems.length > 0 ? (favItems.map((card, index) => {
 					return (

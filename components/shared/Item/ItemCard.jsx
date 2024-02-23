@@ -4,7 +4,7 @@ import Link from "next/link";
 const ItemCard = ({ card }) => {
 	return (
 		<article>
-			<div className="bg-darkBlue hover:bg-midBlue p-2 mb-6 rounded-md hover:scale-105 transition duration-500 ease-in-out">
+			<div className="bg-darkBlue hover:bg-midBlue p-2 rounded-md hover:scale-105 transition duration-500 ease-in-out">
 					<figure className="relative pb-[60%] ">
 						<Link href={`/collection/item/${card._id}`}>
 							<img className="absolute inset-0 w-full h-full object-cover" src={card.image} alt={card.title}></img>

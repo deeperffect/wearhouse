@@ -23,7 +23,7 @@ const PostedBlogs = () => {
 
 
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+		<div className="grid grid-cols-1 md:grid-cols-4 gap-6">
 			{
 				userBlogs && userBlogs.length > 0 ? (userBlogs.map((card, index) => {
 					return (

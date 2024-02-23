@@ -21,7 +21,7 @@ const Collection = () => {
 					<div className="bg-slate-200/50 rounded-md mx-auto">
 							<Searchbar />
 						<Section>
-							<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6">
+							<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 								<Items category={category}/>
 							</div>
 						</Section>

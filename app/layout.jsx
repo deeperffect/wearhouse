@@ -3,6 +3,7 @@ import Header from '@components/shared/Header';
 import { Poppins } from 'next/font/google';
 import { AuthProvider } from './contexts/AuthContext';
 import { BasketProvider } from './contexts/BasketContext';
+import Footer from '@components/shared/Footer';
 
 
 export const metadata = {
@@ -21,12 +22,11 @@ function RootLayout({ children }) {
     <html lang="en">
       <AuthProvider>
         <BasketProvider>
-          <body className={`${poppins.className}`}>
-            <Header />
-            <main className='pt-headerHeight'>
-              {children}
-            </main>
-          </body>
+          <Header />
+          <main className={`${poppins.className} pt-headerHeight`}>
+            {children}
+          </main>
+          <Footer />
         </BasketProvider>
       </AuthProvider>
     </html>

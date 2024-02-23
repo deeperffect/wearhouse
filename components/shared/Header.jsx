@@ -114,7 +114,7 @@ const Header = () => {
             </Container>
             <div className={`overflow-y-auto basket-menu ${basketActive ? 'translate-x-0' : 'translate-x-full'}
             duration-300 transition-transform fixed bg-white bottom-0 w-full
-            top-headerHeight z-50 left-0 py-8 px-2 flex flex-col justify-between gap-4 lg:gap-0`}>
+            top-headerHeight z-50 left-0 py-8 px-2 gap-4 lg:gap-0`}>
                 <BasketContent toggleBasket={toggleBasket}/>
             </div>
         </header>
