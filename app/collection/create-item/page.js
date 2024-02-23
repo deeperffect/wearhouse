@@ -49,7 +49,7 @@ const CreateItem = () => {
 		size: size,
 		sex: sex,
 		category: category,
-		owner: user._id,
+		owner: user.id,
 	};
   
 	try {

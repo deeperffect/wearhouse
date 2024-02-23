@@ -12,7 +12,7 @@ export async function POST(request) {
 		size,
 		sex,
 		category,
-		owner,
+		owner: owner,
 	};
 	try {
 		await Item.create(newItem);
