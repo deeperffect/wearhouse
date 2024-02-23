@@ -54,12 +54,14 @@ export const BasketProvider = ({ children }) => {
 
     const calculatePrice = () => {
         let sum = 0;
-        basketItems.forEach(item => {
-            const itemPrice = item.item.price;
-            const itemCount = item.count;
-            sum += itemPrice * itemCount;
-        })
-        setTotalPrice(sum);
+        if(basketItems) {
+            basketItems.forEach(item => {
+                const itemPrice = item.item.price;
+                const itemCount = item.count;
+                sum += itemPrice * itemCount;
+            })
+            setTotalPrice(sum);
+        }
     };
 
     return (
