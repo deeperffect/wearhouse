@@ -5,7 +5,7 @@ export async function GET(request) {
 	try {
 		const userBlogs = await BlogPost.find({ official: false });
 		const officialBlogs = await BlogPost.find({ official: true });
-		return new Response(JSON.stringify({ userBlogs, officialBlogs }));
+		return new Response(JSON.stringify([userBlogs, officialBlogs]));
 	} catch (error) {
 		console.log(error);
 		return new Response(JSON.stringify({ error: 'Error fetching blogs' }), { status: 500 });
