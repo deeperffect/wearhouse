@@ -16,7 +16,7 @@ const Blog = () => {
 			try {
 				const response = await fetch('/api/blog', { method: "GET" });
 				const data = await response.json();
-				const { userBlogs, officialBlogs } = data[0];
+				const { userBlogs, officialBlogs } = data;
 				setBlogsUser(userBlogs);
 				setBlogsOfficial(officialBlogs);
 			} catch (error) {
