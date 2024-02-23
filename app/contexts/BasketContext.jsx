@@ -5,10 +5,12 @@ import React, { createContext, useEffect, useState } from 'react';
 export const BasketContext = createContext();
 
 export const BasketProvider = ({ children }) => {
-    const [basketItems, setBasketItems] = useState(JSON.parse(localStorage.getItem('items')) || []);
     const [totalPrice, setTotalPrice] = useState(null);
-
+    const [basketItems, setBasketItems] = useState(null);
+    
     useEffect(() => {
+        const items = JSON.parse(localStorage.getItem('items'));
+        setBasketItems(items);
         localStorage.setItem('items', JSON.stringify(basketItems));
         calculatePrice();
     }, [basketItems]);
