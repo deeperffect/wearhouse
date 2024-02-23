@@ -5,7 +5,7 @@ import Section from '@components/Section';
 const Footer = () => {
   return (
 	<Section>
-		<footer className='flex items-center justify-between p-2'>
+		<footer className='flex flex-col lg:flex-row items-center justify-between py-2'>
 			<Logo />
 			<p>2024 Wearhouse. All rights reserved.</p>
 		</footer>

@@ -7,7 +7,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import BasketButton from './BasketButton';
 import BasketContent from './BasketContent';
-import Container from '@components/Container';
 import HamburgerButton from './HamburgerButton';
 import Logo from './Logo';
 import Navbar from './Navbar';
@@ -46,10 +45,12 @@ const Header = () => {
     }, []);
 
     return (
-        <header ref={headerRef} className=' bg-slate-900 text-black fixed top-0 left-0 right-0 z-50'>
+        <header ref={headerRef} className='bg-slate-900 text-black fixed top-0 left-0 right-0 z-50'>
             <Section>
                 <div className='flex justify-between items-center'>
-                    <Logo/>
+                    <div className=' px-[1.5px]'>
+                        <Logo/>
+                    </div>
                     {/* MOBILE MENU */}
                     <div className={`overflow-y-auto header-menu ${isActive ? 'translate-x-0' : 'translate-x-full'} duration-300 transition-transform fixed bg-white bottom-0 top-headerHeight z-50 left-0 w-full flex flex-col items-start p-8 gap-8 lg:hidden`}>
                         {user ? (
@@ -91,37 +92,37 @@ const Header = () => {
                     </div>
                     <div className='hidden lg:flex'>
                         <div className='flex justify-between'>
-                        <div className='flex justify-between items-center gap-6'>
-                            {user ? (
-                                <>
-                                    <Link href="/collection/create-item">
-                                        <div className='bg-white py-2 px-4 rounded-md'>
-                                            <p>Sell</p>
-                                        </div>
-                                    </Link>
-                                    <BasketButton handleClick={toggleBasket} basketActive={basketActive} />
-                                    <Link className="hidden lg:block" href="/profile">
-                                        <Image src="/assets/icons/profile.svg" alt="profile icon" width={32} height={32}/>
-                                    </Link>
-                                    <Btn clickHandler={logoutUser}>Logout</Btn>
-                                </>
-                            ) : (
-                                <>
-                                    <Link className="block p-2 px-4 text-white bg-darkOrange hover:bg-lightOrange rounded-full baseline" href="/login">Login</Link>
-                                </>
-                            )
-                        }
-                        </div>
+                            <div className='flex justify-between items-center gap-6'>
+                                {user ? (
+                                    <>
+                                        <Link href="/collection/create-item">
+                                            <div className='bg-white py-2 px-4 rounded-md'>
+                                                <p>Sell</p>
+                                            </div>
+                                        </Link>
+                                        <BasketButton handleClick={toggleBasket} basketActive={basketActive} />
+                                        <Link className="hidden lg:block" href="/profile">
+                                            <Image src="/assets/icons/profile.svg" alt="profile icon" width={32} height={32}/>
+                                        </Link>
+                                        <Btn clickHandler={logoutUser}>Logout</Btn>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Link className="block p-2 px-4 text-white bg-darkOrange hover:bg-lightOrange rounded-full baseline" href="/login">Login</Link>
+                                    </>
+                                )
+                            }
+                            </div>
                         </div>
                     </div>
                     <HamburgerButton handleClick={toggleHeader} isActive={isActive} />
+                    <div className={`overflow-y-auto basket-menu ${basketActive ? 'translate-x-0' : 'translate-x-full'}
+                    duration-300 transition-transform fixed bg-white bottom-0 w-full
+                    top-headerHeight z-50 left-0 py-8 px-2 gap-4 lg:gap-0`}>
+                        <BasketContent toggleBasket={toggleBasket}/>
+                    </div>
                 </div>
             </Section>
-            <div className={`overflow-y-auto basket-menu ${basketActive ? 'translate-x-0' : 'translate-x-full'}
-            duration-300 transition-transform fixed bg-white bottom-0 w-full
-            top-headerHeight z-50 left-0 py-8 px-2 gap-4 lg:gap-0`}>
-                <BasketContent toggleBasket={toggleBasket}/>
-            </div>
         </header>
     );
 };
