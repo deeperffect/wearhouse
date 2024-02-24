@@ -54,6 +54,8 @@ A teachwear and cyberpunk inspired E-Commerce platform. You can buy and sell clo
 
 👉 **Shopping basket functionality**: To add the items you wish to purchase and see the total price.
 
+👉 **Responsive Design**: For pleasant user experience on both desktop and mobile.
+
 ## <a name="quick-start">🤸 Quick Start</a>
 
 Follow these steps to set up the project locally on your machine.
