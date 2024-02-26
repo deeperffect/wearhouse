@@ -1,12 +1,13 @@
 import { AuthContext } from "@app/contexts/AuthContext";
 import { BasketContext } from "@app/contexts/BasketContext";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useContext } from "react";
 
 const ItemDetails = ({item, setItem}) => {
     const { user } = useContext(AuthContext);
     const { addToBasket } = useContext(BasketContext);
-
+    const router = useRouter();
     async function handleBuy() {
         addToBasket(item);
     }
@@ -23,9 +24,14 @@ const ItemDetails = ({item, setItem}) => {
     setItem(data);
 	};
     
-
+    const onAdd = () => {
+        router.push("/login");
+    };
     const buttonText = item.favorites?.includes(user?.id) ? 'Remove from favorites' : 'Add to favorites';
-
+    const onEdit = () => {
+        router.push(`/collection/item/${item._id}/edit`);
+    };
+    
     return (
         <article className="flex flex-col items-center mx-auto max-w-[45rem] py-8 rounded-xl bg-slate-200/50"> 
             <header>
@@ -42,24 +48,24 @@ const ItemDetails = ({item, setItem}) => {
             </div>
             {
                 user && user.id === item.owner &&
-                <div className="bg-darkOrange hover:bg-lightOrange text-white p-2 w-full text-center max-w-[30rem]">
-                        <Link href={`/collection/item/${item._id}/edit`}>Edit</Link>
+                    <div onClick={onEdit} className="cursor-pointer bg-darkOrange hover:bg-lightOrange text-white p-2 w-full text-center max-w-[30rem]">
+                        <button>Edit</button>
                     </div>
             }
             {
                 !user && 
-                <div className="bg-darkOrange hover:bg-lightOrange text-white p-2  w-full text-center max-w-[30rem]">
-                        <Link href="/login">Add to Shopping Bag</Link>
+                    <div onClick={onAdd} className="cursor-pointer bg-darkOrange hover:bg-lightOrange text-white p-2  w-full text-center max-w-[30rem]">
+                        <button>Add to Shopping Bag</button>
                     </div>
             }
             {
                 user && user.id !== item.owner &&
                 <>
-                        <div className="bg-darkOrange hover:bg-lightOrange text-white p-2 my-2 w-full text-center max-w-[30rem]">
-                            <button onClick={handleBuy}>Add to Shopping Bag</button>
+                        <div onClick={handleBuy} className="cursor-pointer bg-darkOrange hover:bg-lightOrange text-white p-2 my-2 w-full text-center max-w-[30rem]">
+                            <button>Add to Shopping Bag</button>
                         </div>     
-                        <div className="bg-lightBlue hover:bg-indigo-300 text-white p-2  w-full text-center max-w-[30rem]">
-                            <button onClick={handleFav}>{buttonText}</button>
+                        <div  onClick={handleFav} className="cursor-pointer bg-lightBlue hover:bg-indigo-300 text-white p-2  w-full text-center max-w-[30rem]">
+                            <button>{buttonText}</button>
                         </div>
                     </>
             } 

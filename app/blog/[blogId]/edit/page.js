@@ -114,8 +114,12 @@ const EditBlog = ({params}) => {
 						<h3 className="pb-1 font-bold">Image URL:</h3>
 						<input className="rounded-md max-w-full w-full p-2 leading-none" type="text" placeholder="Image.." value={image} onChange={(e) => setImage(e.target.value)} />
 					</div>
-					<button className="bg-darkOrange hover:bg-lightOrange text-white w-full p-2 mb-4" onClick={handleEdit}>Edit</button>
-					<button className="bg-red-400 text-black w-full p-2" onClick={handleDeleteConfirmation}>Delete</button>
+					<div className="cursor-pointer"  onClick={handleEdit}>
+						<button className="bg-darkOrange hover:bg-lightOrange text-white w-full p-2 mb-4">Edit</button>
+					</div>
+					<div className="cursor-pointer" onClick={handleDeleteConfirmation}>
+						<button className="bg-red-400 text-black w-full p-2">Delete</button>
+					</div>
 				</form>
 				{showDeleteConfirmation && (
 					<div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center">

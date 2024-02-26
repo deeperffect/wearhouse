@@ -7,30 +7,32 @@ import Footer from '@components/shared/Footer';
 
 
 export const metadata = {
-  title: 'Wearhouse',
-  description: 'The platform for your style',
+	title: 'Wearhouse',
+	description: 'The platform for your style',
 };
 
 const poppins = Poppins({
-  variable: '--font-poppins',
-  subsets: ['latin-ext'],
-  weight: ['300', '400', '500', '600', '700'],
+	variable: '--font-poppins',
+	subsets: ['latin-ext'],
+	weight: ['300', '400', '500', '600', '700'],
 });
 
 function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <AuthProvider>
-        <BasketProvider>
-          <Header />
-          <main className={`${poppins.className} pt-headerHeight`}>
-            {children}
-          </main>
-          <Footer />
-        </BasketProvider>
-      </AuthProvider>
-    </html>
-  )
+	return (
+		<html lang="en">
+			<body>
+				<AuthProvider>
+					<BasketProvider>
+						<Header />
+							<main className={`${poppins.className} pt-headerHeight`}>
+								{children}
+							</main>
+						<Footer />
+					</BasketProvider>
+				</AuthProvider>
+			</body>
+		</html>
+	)
 };
 
 export default RootLayout;

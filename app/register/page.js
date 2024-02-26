@@ -4,7 +4,6 @@ import { useContext, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { AuthContext } from '@app/contexts/AuthContext';
 import Section from '@components/Section';
-import { isEmail } from 'validator';
 
 const Register = () => {
 

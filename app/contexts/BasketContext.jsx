@@ -1,5 +1,4 @@
 'use client'
-import { Inder } from 'next/font/google';
 import React, { createContext, useEffect, useState } from 'react';
 
 export const BasketContext = createContext();
@@ -10,10 +9,11 @@ export const BasketProvider = ({ children }) => {
     
     useEffect(() => {
         const items = JSON.parse(localStorage.getItem('items'));
-        setBasketItems(items);
-        localStorage.setItem('items', JSON.stringify(basketItems));
-        calculatePrice();
-    }, [basketItems]);
+        if (items) {
+            setBasketItems(items);
+            calculatePrice();
+        };
+    }, []);
 
     function incrementItemCount(item) {
         const itemIndex = basketItems.findIndex(basketItem => item._id === basketItem.item._id);
@@ -38,12 +38,14 @@ export const BasketProvider = ({ children }) => {
     };
 
     const addToBasket = (item) => {
-        if (basketItems.some(basketItem => item._id === basketItem.item._id)) {
+        if (basketItems?.some(basketItem => item._id === basketItem.item._id)) {
             incrementItemCount(item);
             calculatePrice();    
             return;
         };
-        setBasketItems(prev => [...prev, { item, count:1 }]);
+        
+        const newBasketItems = basketItems || [];
+        setBasketItems([...newBasketItems, { item, count: 1 }]);
         calculatePrice();    
     };
     

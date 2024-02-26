@@ -1,10 +1,10 @@
 import { AuthContext } from "@app/contexts/AuthContext";
 import { useContext } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const BlogDetails = ({blog, setBlog}) => {
 	const { user } = useContext(AuthContext);
-
+	const router = useRouter();
 	async function handleLike() {
 		const response = await fetch(`/api/blog/${blog._id}/like`, {
 			method: "POST",
@@ -15,7 +15,11 @@ const BlogDetails = ({blog, setBlog}) => {
 		});
 		const data = await response.json();
 		setBlog(data);
-	}
+	};
+
+	const onEdit = () => {
+		router.push(`/blog/${blog._id}/edit`);
+	};
 
 	return (
 		<article className="flex flex-col items-center mx-auto max-w-[75rem] py-8 rounded-xl bg-slate-200/50">
@@ -29,14 +33,14 @@ const BlogDetails = ({blog, setBlog}) => {
 				<p className="bg-slate-400/50 p-4 rounded-xl my-4">{blog.description}</p>
 					{
 						user && user.id === blog.owner && 
-						<div className="bg-darkOrange hover:bg-lightOrange text-white p-2 my-2 w-full text-center max-w-[30rem]">
-								<Link href={`/blog/${blog._id}/edit`}>Edit</Link>
+						<div onClick={onEdit} className="cursor-pointer bg-darkOrange hover:bg-lightOrange text-white p-2 my-2 w-full text-center max-w-[30rem]">
+								<button>Edit</button>
 							</div>
 					}     
 					{
 						user && !blog.likes?.includes(user.id) && user.id !==blog.owner &&
-							<div className="bg-darkOrange hover:bg-lightOrange text-white p-2 my-2 w-full text-center max-w-[30rem]">
-								<button onClick={handleLike}>Like</button>
+							<div  onClick={handleLike} className=" cursor-pointer bg-darkOrange hover:bg-lightOrange text-white p-2 my-2 w-full text-center max-w-[30rem]">
+								<button>Like</button>
 							</div>
 					}
 					{
